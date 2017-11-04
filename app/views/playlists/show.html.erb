@@ -10,7 +10,7 @@
   <div>
   <div class="playlist-details">
     <div class="playlist-details-title">
-  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
+  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div><br>
   <div class="playlist-host">&nbsp Host: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div>
   </div>
   <div class="playlist-code center-align">&nbsp Invite Other With:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
@@ -47,10 +47,10 @@
   </script>
   <% if @access == "Host" %>
     <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a> 
+    <a class="add-search-button">Add A Song</a>
   <% elsif (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
   <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a> 
+    <a class="add-search-button">Add A Song</a>
   <% else %>
   <div class="add-search-container hidden">
     <a class="add-search-button">Add A Song</a>
@@ -82,15 +82,15 @@
     <% if song.status == "played" %>
       <div class="song-in-queue played" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
         <i class="fa fa-check" aria-hidden="true"></i>
-     
+
     <% elsif song.status == "playing" %>
       <div class="song-in-queue playing" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
         <i class="fa fa-volume-down" aria-hidden="true"></i>
-     
+
     <% else %>
       <div class="song-in-queue que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
         <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-       
+
     <% end %>
 
 
@@ -99,37 +99,37 @@
 
       <% if (@access == "Host") %> <!-- if the user is host -->
         <% if @playlist_q.public %>
-         
+
             <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-       
+
         <%else %>
           <% if song.status == "que" %>
             <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
               <% if @vote_now == "up" %>
-            
-                
+
+
                 <span class="buttons"><button type="button" name="button" class="upvote voted thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-        
+
               <% elsif @vote_now == "down" %>
-                
+
                 <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote voted thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-               
+
               <% end %>
             <% else %>
-            
+
                 <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-          
+
             <% end %>
 
           <% elsif song.status == "playing" %>
-           
+
               <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-           
+
           <% else %> <!-- if song is played -->
-            
+
              <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a></span> &nbsp
-          
+
           <% end %> <!-- end of if the playlist is public/private -->
         <% end %>  <!-- end of if the user is Host -->
       <% elsif (@access == "Guest") %> <!-- if the user is Guest -->
@@ -138,44 +138,44 @@
             <% if Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]) %>
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:user_id]).status %>
               <% if @vote_now == "up" %>
-             
+
                 <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-            
+
               <% elsif @vote_now == "down" %>
-             
+
                   <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-            
+
               <% end %>
             <% else %>
-            
-                
-                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span> 
+
+
+                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
                 <% if (User.find(song.user_id).id == session[:user_id]) || @access == "Host" %>
                       <a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 <% end %>&nbsp
               </span>
             <% end %>
           <% elsif song.status == "playing" %>
-          
+
               <span class=" buttons"><button type="button" name="button" class="hidden upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="hidden downvote thumb_btn "><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-           
+
           <% else %> <!-- if song is played -->
-          
+
               <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-        
+
           <% end %>
         <% else %> <!-- if playlist is public -->
-       
+
             <span class=" buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-        
+
         <% end %>
       <% else %> <!-- if the user is Viewer -->
-       
+
           <span class="hidden buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
-       
+
       <% end %>
 
-      
+
 
     </div> <!-- ends the song div -->
 
