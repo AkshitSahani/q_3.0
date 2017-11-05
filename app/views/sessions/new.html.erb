@@ -1,10 +1,8 @@
-<!-- <%= link_to 'Sign in with Deezer', "https://connect.deezer.com/oauth/auth.php?app_id=#{ENV["deezer_application_id"]}&redirect_uri=http://localhost:3000/auth/deezer/callback&perms=basic_access,email,manage_library" %> -->
-
-
 
 <div class="login-form">
   <p id="alert"></p>
   <h1 class="title">LOG IN</h1>
+  <%= link_to image_tag('continue_with_facebook.png', class: "responsive-img"), "/auth/facebook", id: "sign_in" %>
   <%= form_tag sessions_path, method: :post do %>
   <div class="input-field field">
     <%= label_tag :email %><br />
@@ -16,6 +14,7 @@
   </div>
   <button class="btn login-session" id="login-button" type="submit" name="action">LOG IN</button>
 </div>
+
 
 
 <% end %>
