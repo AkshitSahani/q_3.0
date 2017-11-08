@@ -110,6 +110,11 @@ GEM
     omniauth-deezer (0.3.0)
       faraday
       omniauth (>= 1.1.0)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
     owlcarousel-rails (1.1.3.3)
       jquery-rails
     pg (0.18.4)
@@ -213,6 +218,7 @@ DEPENDENCIES
   oauth2
   omniauth
   omniauth-deezer
+  omniauth-facebook
   owlcarousel-rails
   pg (~> 0.18.1)
   pry-rails

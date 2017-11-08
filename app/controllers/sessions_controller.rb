@@ -17,12 +17,27 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    if params[:email]
+      user = User.find_by(email: params[:email])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to user_path(user.id)
+      else
+        flash.now[:alert] = "Invalid email or password!"
+        render "new"
+      end
+    elsif env["omniauth.auth"]
+      auth = env["omniauth.auth"]
+      if User.find_by_email(auth.info.email)
+        user = User.find_by_email(auth.info.email)
+        user.update_attributes(user_params_fb(auth))
+        session[:user_id] = user.id
+      else
+        user = User.from_omniauth(auth)
+        session[:user_id] = user.id
+      end
       redirect_to user_path(user.id)
     else
-      flash.now[:alert] = "Invalid email or password!"
       render "new"
     end
   end
@@ -38,6 +53,19 @@ class SessionsController < ApplicationController
     @songs.each do |song|
       song.update_attribute(:status, "que")
     end
+  end
+
+  private
+  def user_params_fb(auth)
+    params = ActionController::Parameters.new({
+      facebook: {
+        provider: auth.provider,
+        uid: auth.uid,
+        oauth_token: auth.credentials.token,
+        oauth_expires_at: Time.at(auth.credentials.expires_at)
+      }
+    })
+    params.require(:facebook).permit(:provider, :uid, :oauth_token, :oauth_expires_at)
   end
 
 end

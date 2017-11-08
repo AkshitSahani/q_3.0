@@ -11,12 +11,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
+    if User.where(email: user_params[:email], provider: "facebook").count > 0
+      redirect_to '/auth/facebook'
     else
-      render "new"
+      @user = User.new(user_params)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        render "new"
+      end
     end
   end
 
@@ -43,4 +47,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
+  
 end
