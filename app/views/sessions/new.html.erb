@@ -1,8 +1,7 @@
 
 <div class="login-form">
   <p id="alert"></p>
-  <h1 class="title">LOG IN</h1>
-  <%= link_to image_tag('continue_with_facebook.png', class: "responsive-img"), "/auth/facebook", id: "sign_in" %>
+  <h1 class="title">LOG IN TO Q</h1>
   <%= form_tag sessions_path, method: :post do %>
   <div class="input-field field">
     <%= label_tag :email %><br />
@@ -13,6 +12,10 @@
     <%= password_field_tag :password %>
   </div>
   <button class="btn login-session" id="login-button" type="submit" name="action">LOG IN</button>
+  <div class="or-form">
+    <strong class='or-form-text'>OR</strong>
+  </div>
+  <button class="btn login-session" id="facebook-button" type="submit" name="action">LOG IN WITH FACEBOOK</button>
 </div>
 
 
