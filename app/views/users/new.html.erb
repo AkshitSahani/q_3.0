@@ -1,5 +1,5 @@
 <div class="sign-up-form">
-  <h1 class="title">SIGN UP</h1>
+  <h1 class="title">CREATE AN ACCOUNT</h1>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
@@ -30,6 +30,6 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </div>
-    <button class="btn login-session" id="sign-up-button" type="submit" name="action">Sign Up</button>
+    <button class="btn login-session" id="sign-up-button" type="submit" name="action">Start partying</button>
 </div>
 <% end %>
