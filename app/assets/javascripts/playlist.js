@@ -31,7 +31,7 @@ if(regExp.exec(window.location.pathname) != null) {
       Materialize.toast("Vote withdrawn!", 3000);
       var netVote = currentVote - 1;
       $(this).parents('.buttons').children('.heart').children(".netvote").html(netVote);
-     
+
       $(this).removeClass("voted")
 
     } else {
