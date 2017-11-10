@@ -140,8 +140,9 @@ function randomPhrase() {
     $('.search-container').css('z-index',3);
     $('.search-container').fadeIn(800).addClass('search-container-show');
     $('.add-search-container').addClass('hidden');
-    $('.upvote').css('z-index', 1);
-    $('.downvote').css('z-index', 1);
+    // $('.upvote').css('z-index', 1);
+    // $('.downvote').css('z-index', 1);
+    $('#search_results').html('');
     $.ajax({
       url: '/playlists/' + playlistId + '/suggestedsongs/',
       method: 'get',
@@ -149,6 +150,9 @@ function randomPhrase() {
       dataType: 'json'
     }).done(function(data){
       console.log(data);
+
+      albumResults = data['albums']['data'];
+      artistResults = data['artists']['data'];
 
       var albumsLength = data['albums']['data'].length;
       // console.log(albumsLength);
@@ -511,6 +515,64 @@ function randomPhrase() {
 
      })
    })
+
+   $('body').delegate('.all-artists', 'click', function(){
+     var allAlbums = $('.card__panel')[1];
+     $(allAlbums).remove();
+     $(this).parents('.card__panel').attr('class', 'col s12 artists-expanded');
+
+
+     $('.artists-expanded').html('');
+    // console.log(artistResults);
+
+     var artistsHeader = $('<div>').addClass('panel__head');
+     var artists = $('<div>').addClass('theme').html('Artists');
+    //  var seeAllArtists = $('<a>').addClass('more valign-wrapper all-artists').attr('href', '#').text('See all artists');
+     // $(artistsContainer).append(artistsHeader);
+     $(artistsHeader).append($(artists));
+     var artistResultContainer = $('<div>').addClass('photos');
+     //below is all to be created in a loop through the search results.
+     for(var i = 0; i < 20; i++){
+
+       var photoElement = $('<div>').addClass('photos__elem center-align artist').attr('artist-name', artistResults[i]['name']).attr('artist-id', artistResults[i]['id']);;
+       var imageWrapper = $('<div>').addClass('img-wrapper');
+       var artistImg = $('<img>').addClass('circle').attr('src', artistResults[i]["picture_medium"]);
+       var artistName = $('<h6>').addClass('photos__h6').text(artistResults[i]['name']);
+       $(artistResultContainer).append($(photoElement).append($(imageWrapper).append(artistImg)).append(artistName));
+     }
+     $('.artists-expanded').append(artistsHeader).append(artistResultContainer);
+     $('.photos__elem').css('width', '8.5%');
+   })
+
+   $('body').delegate('.all-albums', 'click', function(){
+     var allAlbums = $('.card__panel')[0];
+     $(allAlbums).remove();
+     $(this).parents('.card__panel').attr('class', 'col s12 albums-expanded');
+
+
+     $('.albums-expanded').html('');
+    //  console.log(albumResults);
+    // console.log(artistResults);
+
+     var albumsHeader = $('<div>').addClass('panel__head');
+     var albums = $('<div>').addClass('theme').html('Albums');
+    //  var seeAllArtists = $('<a>').addClass('more valign-wrapper all-albums').attr('href', '#').text('See all albums');
+     // $(albumsContainer).append(albumsHeader);
+     $(albumsHeader).append($(albums));
+     var albumResultContainer = $('<div>').addClass('photos');
+     //below is all to be created in a loop through the search results.
+     for(var i = 0; i < 20; i++){
+
+       var photoElement = $('<div>').addClass('photos__elem center-align album').attr('album-name', albumResults[i]['title']).attr('album-id', albumResults[i]['id']);;
+       var imageWrapper = $('<div>').addClass('img-wrapper');
+       var albumImg = $('<img>').addClass('circle').attr('src', albumResults[i]["cover_medium"]);
+       var albumName = $('<h6>').addClass('photos__h6').text(albumResults[i]['title']);
+       $(albumResultContainer).append($(photoElement).append($(imageWrapper).append(albumImg)).append(albumName));
+     }
+     $('.albums-expanded').append(albumsHeader).append(albumResultContainer);
+     $('.photos__elem').css('width', '8.5%');
+   })
+
    var backButton = $('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS');
 
    $("body").delegate('.inner-album','click',function(event) {
