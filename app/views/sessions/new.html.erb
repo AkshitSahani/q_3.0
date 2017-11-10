@@ -1,15 +1,15 @@
 
 <div class="login-form">
   <p id="alert"></p>
-  <h1 class="title">LOG IN TO Q</h1>
+  <h1 class="title">SIGN INTO Q</h1>
   <%= form_tag sessions_path, method: :post do %>
   <div class="input-field field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %>
+    <!-- <%= label_tag :email %><br /> -->
+    <%= text_field_tag :email, nil, :placeholder => "Email" %>
   </div>
   <div class="field input-field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+    <!-- <%= label_tag :password %><br /> -->
+    <%= password_field_tag :password, nil, :placeholder => "Password" %>
   </div>
   <button class="btn login-session" id="login-button" type="submit" name="action">LOG IN</button>
   <div class="or-form">

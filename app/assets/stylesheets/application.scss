@@ -43,6 +43,7 @@
  .wrapper-signup {
    min-height: 160%;
    position: relative;
+   background-color: #efefef;
  }
 
 
@@ -69,6 +70,55 @@
 
 form {
   border-radius: 100px;
+  margin: 50px 30px 30px 30px;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #da4c93 !important;
+  box-shadow: 0 1px 0 0 #da4c93 !important;
+}
+
+/* Text inputs */
+/* line 24, /home/justin/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/materialize-sass-0.98.0/app/assets/stylesheets/materialize/components/forms/_input-fields.scss */
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 3.5rem;
+  width: 100%;
+  font-size: 1.4rem;
+  margin: 0 0 20px 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all 0.3s;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 img {
@@ -106,7 +156,6 @@ h1{
   font-family: "Montserrat-Bold";
   font-size: 80px;
   color: white;
-  letter-spacing: 5px;
   margin-top: 0;
   margin-bottom: 0;
 }
