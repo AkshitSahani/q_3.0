@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => "create_account"
+
   end
 
   def create
@@ -47,5 +49,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
-  
+
 end
