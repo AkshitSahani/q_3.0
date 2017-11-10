@@ -90,13 +90,29 @@ class PlaylistsController < ApplicationController
       @authorization = Authorization.find_by(playlist_id: @playlist.id, user_id: session[:user_id])
       if @authorization
         redirect_to playlist_path(@playlist)
-      else
+      elsif session[:user_id]
         Authorization.create(playlist_id: @playlist.id, user_id: session[:user_id], status: "Guest")
         redirect_to playlist_path(@playlist)
+      else
+        @user = TempUser.create();
+        session[:user_type] = "temp"
+        session[:user_id] = @user.id
+        session[:playlist_id] = @playlist.id
+        Authorization.create(playlist_id: @playlist.id, user_id: @user.id, status: "Guest")
+        redirect_to temp_user_path
       end
     else
       render :join
     end
+  end
+
+  def name
+  end
+
+  def create_name
+    @user = TempUser.find(session[:user_id])
+    @user.update_attributes(name_params)
+    redirect_to playlist_path(session[:playlist_id])
   end
 
   def new
@@ -183,8 +199,8 @@ class PlaylistsController < ApplicationController
 
       if @authorization && @authorization.save
     redirect_to playlist_path(@playlist_q)
-
     end
+    
   end
 
   def edit
@@ -273,6 +289,10 @@ class PlaylistsController < ApplicationController
   end
 
 private
+
+  def name_params
+    params.permit(:firstname)
+  end
 
   def playlist_params
       params.require(:playlist).permit(:name, :description, :theme, :song_limit)

@@ -1,6 +1,7 @@
 class SuggestedSong < ApplicationRecord
   belongs_to :playlist
-  belongs_to :user
+  belongs_to :user, optional: true
+  belongs_to :temp_user, optional: true
   has_many :votes
 
     def self.next_song_id(playlist_id)
