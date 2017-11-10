@@ -393,7 +393,7 @@ function randomPhrase() {
    // Display the search results for artist
    $("body").delegate('.artist','click',function(event) {
    event.preventDefault();
-   console.log("this button was clicked!");
+  //  console.log("this button was clicked!");
    var artist_id = parseInt($(this).attr('artist-id'));
 
 
@@ -563,7 +563,7 @@ function randomPhrase() {
      //below is all to be created in a loop through the search results.
      for(var i = 0; i < 20; i++){
 
-       var photoElement = $('<div>').addClass('photos__elem center-align album').attr('album-name', albumResults[i]['title']).attr('album-id', albumResults[i]['id']);;
+       var photoElement = $('<div>').addClass('photos__elem center-align album').attr('album_title', albumResults[i]['title']).attr('album-id', albumResults[i]['id']);;
        var imageWrapper = $('<div>').addClass('img-wrapper');
        var albumImg = $('<img>').addClass('circle').attr('src', albumResults[i]["cover_medium"]);
        var albumName = $('<h6>').addClass('photos__h6').text(albumResults[i]['title']);

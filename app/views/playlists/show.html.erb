@@ -46,23 +46,35 @@
     <%= render :partial => "nextsong.js" %>
   </script>
   <% if @access == "Host" %>
-    <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a>
+  <div class="search">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% elsif (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
-  <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a>
+  <div class="search">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% else %>
-  <div class="add-search-container hidden">
-    <a class="add-search-button">Add A Song</a>
+  <div class="search hidden">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% end %>
 </div>
 
-<div class="search">
+<!-- <div class="search">
   <div class="search__inner">
     <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
     <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
   </div>
-</div>
+</div> -->
 
   <div class="search-container hidden">
     <section class="search">
