@@ -35,15 +35,16 @@
  }
 
  .wrapper {
-   min-height: 140%;
-   position: relative;
+   min-height: 100%;
    background-color: #efefef;
+   background: url("/assets/whatIsQBg1.jpg") center center no-repeat;
+   background-size: cover;
  }
 
  .wrapper-signup {
-   min-height: 160%;
-   position: relative;
-   background-color: #efefef;
+   min-height: 100%;
+   background: url("/assets/headerBG2.jpg") center center no-repeat;
+   background-size: cover;
  }
 
 
