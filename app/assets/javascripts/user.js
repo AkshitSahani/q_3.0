@@ -103,6 +103,18 @@ $(document).on("ready", function(){
        })
      });
    });
+
+   $('.purpleButton').on('click', function(e) {
+    e.preventDefault();
+    $('.hostLoadDiv').css('display', 'block');
+    $.ajax({
+        type: "GET",
+        url: "/playlists/new",
+        success: function(data){
+            $('.hostLoadDiv').html(data).css("display", "block");
+        }
+    });
+   })
 });
 
 
