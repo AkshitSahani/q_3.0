@@ -116,6 +116,12 @@ $(document).on("ready", function(){
         }
     });
    })
+
+   $(document).keyup(function(e) {
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+      $('.hostLoadDiv').css('display', 'none');
+    }
+});
 });
 
 
