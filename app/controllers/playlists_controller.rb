@@ -103,6 +103,7 @@ class PlaylistsController < ApplicationController
     set_themes
     set_song_limit
     @playlist_q = Playlist.new
+    render :layout => "create_playlist"
   end
 
   def destroy
