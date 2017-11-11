@@ -106,11 +106,12 @@ $(document).on("ready", function(){
 
    $('.purpleButton').on('click', function(e) {
     e.preventDefault();
-    $('.hostLoadDiv').css('display', 'block');
+    $('.loader-div').css('display', 'block');
     $.ajax({
         type: "GET",
         url: "/playlists/new",
         success: function(data){
+            $('.loader-div').css('display', 'none');
             $('.hostLoadDiv').html(data).css("display", "block");
         }
     });
