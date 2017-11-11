@@ -117,7 +117,7 @@ $(document).on("ready", function(){
     });
    })
 
-   $(document).on('click', '.form-close', function(e){
+   $(document).on('click', '.form-close', function(){
      $('.hostLoadDiv').css('display', 'none');
    });
 
