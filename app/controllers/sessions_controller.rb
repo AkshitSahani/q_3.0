@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
+        session[:actve_id] = user.tempuserid
         redirect_to user_path(user.id)
       else
         flash.now[:alert] = "Invalid email or password!"
@@ -32,8 +33,10 @@ class SessionsController < ApplicationController
         user = User.find_by_email(auth.info.email)
         user.update_attributes(user_params_fb(auth))
         session[:user_id] = user.id
+        session[:active_id] = user.tempuserid
       else
         user = User.from_omniauth(auth)
+        session[:active_id] = user.tempuserid
         session[:user_id] = user.id
       end
       redirect_to user_path(user.id)

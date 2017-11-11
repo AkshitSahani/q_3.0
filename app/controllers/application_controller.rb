@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    @current_user = TempUser.find(session[:user_id]) if session[:user_type]
+    @current_user = TempUser.find(session[:active_id]) if session[:user_type]
+    #XYZ
     @current_user||= User.find(session[:user_id]) if session[:user_id]
   end
 

@@ -9,7 +9,7 @@ class PlaylistsController < ApplicationController
 
   def show
     SuggestedSong.where(playlist_id: params[:id], status: "playing").update_all(status: "que")
-    @access = Authorization.find_by(playlist_id: params[:id], user_id: session[:user_id])
+    @access = Authorization.find_by(playlist_id: params[:id], user_id: session[:active_id])
     if @access
       @access = @access.status
     else
@@ -17,13 +17,13 @@ class PlaylistsController < ApplicationController
     end
 
     @playlist_q = Playlist.find(params[:id])
-    @host = @playlist_q.authorizations.find_by(status: 'Host').user
+    @host = User.find_by(tempuserid: @playlist_q.authorizations.find_by(status: 'Host').user_id)
     @playlist_q_songs = SuggestedSong.where(playlist_id: @playlist_q.id)
     @next_song_id = SuggestedSong.next_song_id(params[:id])
     @next_song_record = SuggestedSong.next_song_record(params[:id])
     @songs = SuggestedSong.playlist_songs(params[:id])
 
-    # This is related to the search function we are show
+    # This is related to the search function we are showing
 
     response = HTTParty.get("https://connect.deezer.com/oauth/access_token.php?app_id=#{ENV["deezer_application_id"]}&secret=#{ENV["deezer_secret_key"]}&code=#{params[:code]}&output=json")
     access_token = response["access_token"]
@@ -87,18 +87,19 @@ class PlaylistsController < ApplicationController
     @access_code = params["access_code"]
     @playlist = Playlist.find_by(access_code: @access_code)
     if @playlist
-      @authorization = Authorization.find_by(playlist_id: @playlist.id, user_id: session[:user_id])
+      @authorization = Authorization.find_by(playlist_id: @playlist.id, user_id: session[:active_id])
       if @authorization
         redirect_to playlist_path(@playlist)
       elsif session[:user_id]
-        Authorization.create(playlist_id: @playlist.id, user_id: session[:user_id], status: "Guest")
+        Authorization.create(playlist_id: @playlist.id, user_id: session[:active_id], status: "Guest")
         redirect_to playlist_path(@playlist)
       else
         @user = TempUser.create();
         session[:user_type] = "temp"
-        session[:user_id] = @user.id
+        # XYZ Determine if line above is needed
+        session[:active_id] = @user.id
         session[:playlist_id] = @playlist.id
-        Authorization.create(playlist_id: @playlist.id, user_id: @user.id, status: "Guest")
+        Authorization.create(playlist_id: @playlist.id, user_id: session[:active_id], status: "Guest")
         redirect_to temp_user_path
       end
     else
@@ -110,7 +111,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create_name
-    @user = TempUser.find(session[:user_id])
+    @user = TempUser.find(session[:active_id])
     @user.update_attributes(name_params)
     redirect_to playlist_path(session[:playlist_id])
   end
@@ -190,7 +191,7 @@ class PlaylistsController < ApplicationController
     if @playlist_q.save
       @authorization = Authorization.new(
         playlist_id: @playlist_q.id,
-        user_id: session[:user_id],
+        user_id: session[:active_id],
         status: "Host")
     else
       flash.now[:alert] = @playlist_q.errors.full_messages
@@ -200,7 +201,7 @@ class PlaylistsController < ApplicationController
       if @authorization && @authorization.save
     redirect_to playlist_path(@playlist_q)
     end
-    
+
   end
 
   def edit
@@ -257,19 +258,19 @@ class PlaylistsController < ApplicationController
     forbiddens = Authorization.where(playlist_id: params[:id], status: "Forbidden")
     @guest_names = []
     guests.each do |guest|
-      first_name = guest.user.first_name
-      last_name = guest.user.last_name
-      user_id = guest.user.id
+      first_name = TempUser.find(guest.user_id).first_name
+      user_id = guest.user_id
       status = guest.status
-      g = [first_name, last_name, user_id, status]
+      g = [first_name, '', user_id, status]
+      #XYZ Fix removed last name
       @guest_names << g
     end
     forbiddens.each do |forb|
-      first_name = forb.user.first_name
-      last_name = forb.user.last_name
-      user_id = forb.user.id
+      first_name = TempUser.find(forb.user_id).first_name
+      user_id = forb.user_id
       status = forb.status
-      f = [first_name, last_name, user_id, status]
+      f = [first_name, '', user_id, status]
+      #XYZ Fix removed last name
       @guest_names << f
     end
       respond_to do |format|
@@ -291,7 +292,7 @@ class PlaylistsController < ApplicationController
 private
 
   def name_params
-    params.permit(:firstname)
+    params.permit(:first_name)
   end
 
   def playlist_params
