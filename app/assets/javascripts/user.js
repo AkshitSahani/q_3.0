@@ -117,6 +117,10 @@ $(document).on("ready", function(){
     });
    })
 
+   $(document).on('click', '.form-close', function(e){
+     $('.hostLoadDiv').css('display', 'none');
+   });
+
    $(document).keyup(function(e) {
      if (e.keyCode == 27) { // escape key maps to keycode `27`
       $('.hostLoadDiv').css('display', 'none');
