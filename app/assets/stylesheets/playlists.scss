@@ -494,8 +494,8 @@ button.downvote.btn.darken-2 {
 .form-close {
   font-size: 1.5rem;
   position: absolute;
-  right: 5px;
-  top: 0;
+  right: 10px;
+  top: 3px;
   color: rgba(96, 88, 94, 0.34);
   cursor: pointer;
 }
@@ -506,10 +506,6 @@ button.downvote.btn.darken-2 {
 @media (min-width: 0px) and (max-width: 599px) {
  .q-instructions, .q-description {
    padding: 2rem 3rem;
- }
-
- #playlist-title {
-   font-size: 46px;
  }
 
  .viewable-screen-front {
@@ -587,10 +583,6 @@ button.downvote.btn.darken-2 {
   }
  .search-container {
    width: 84.95%;
- }
-
- #playlist-title {
-   font-size: 60px;
  }
 
  .viewable-screen-front {
@@ -703,10 +695,6 @@ button.downvote.btn.darken-2 {
 
  .search-container {
    width: 70%;
- }
-
- #playlist-title {
-   font-size: 60px;
  }
 
  .viewable-screen-front {
