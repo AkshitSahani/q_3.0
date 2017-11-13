@@ -153,6 +153,7 @@ function randomPhrase() {
 
       albumResults = data['albums']['data'];
       artistResults = data['artists']['data'];
+      trackResults = data['tracks']['data'];
 
       var albumsLength = data['albums']['data'].length;
       // console.log(albumsLength);
@@ -225,7 +226,7 @@ function randomPhrase() {
 
       var tracksHeader = $('<div>').addClass('panel__head');
       var tracks = $('<div>').addClass('theme').html('Songs');
-      var seeAllTracks = $('<a>').addClass('more valign-wrapper').attr('href', '#').text('See all songs');
+      var seeAllTracks = $('<a>').addClass('more valign-wrapper all-tracks').attr('href', '#').text('See all songs');
 
       $(tracksHeader).append(tracks).append(seeAllTracks);
 
@@ -243,7 +244,7 @@ function randomPhrase() {
 
       var tracksBody = $('<tbody>');
 
-      for(var i=0; i<data['tracks']['data'].length; i++){
+      for(var i=0; i < 5; i++){
         var tr = $('<tr>').addClass('suggest_song1').attr('song_id', data["tracks"]['data'][i]['id']).attr('song_name', data["tracks"]['data'][i]['title']).attr('artist', data["tracks"]['data'][i]["artist"]["name"]);
         var td = $('<td>');
         $(td).append($('<i>').addClass('material-icons left').text('add'));
@@ -516,23 +517,35 @@ function randomPhrase() {
      })
    })
 
-   $('body').delegate('.all-artists', 'click', function(){
+   $('body').delegate('.all-artists', 'click', function(e){
+     e.preventDefault();
+     var newWindow = $('<div>').css('z-index', '5').text('new-window');
+     $('body').append(newWindow);
      var allAlbums = $('.card__panel')[1];
      $(allAlbums).remove();
      $(this).parents('.card__panel').attr('class', 'col s12 artists-expanded');
 
 
-     $('.artists-expanded').html('');
+     $('.artists-expanded').html('').css('background-color', 'white');
     // console.log(artistResults);
 
      var artistsHeader = $('<div>').addClass('panel__head');
      var artists = $('<div>').addClass('theme').html('Artists');
-    //  var seeAllArtists = $('<a>').addClass('more valign-wrapper all-artists').attr('href', '#').text('See all artists');
+     var backArtists = $('<a>').addClass('more valign-wrapper back-artists').attr('href', '#').text('Back');
      // $(artistsContainer).append(artistsHeader);
-     $(artistsHeader).append($(artists));
+     $(artistsHeader).append(artists).append(backArtists);
      var artistResultContainer = $('<div>').addClass('photos');
-     //below is all to be created in a loop through the search results.
-     for(var i = 0; i < 20; i++){
+
+     //Show 20 results max. If there are less than 20 results, show all the results
+     if(artistResults.length >= 20){
+      var artistCount = 20;
+     }
+     else{
+       var artistCount = artistResults.length;
+     }
+
+     //a loop through the artist search results.
+     for(var i = 0; i < artistCount; i++){
 
        var photoElement = $('<div>').addClass('photos__elem center-align artist').attr('artist-name', artistResults[i]['name']).attr('artist-id', artistResults[i]['id']);;
        var imageWrapper = $('<div>').addClass('img-wrapper');
@@ -542,26 +555,36 @@ function randomPhrase() {
      }
      $('.artists-expanded').append(artistsHeader).append(artistResultContainer);
      $('.photos__elem').css('width', '8.5%');
+     var panel =  $('.panel__head')[0];
+     $(panel).css('padding', '5px 0px');
    })
 
-   $('body').delegate('.all-albums', 'click', function(){
+   $('body').delegate('.all-albums', 'click', function(e){
+     e.preventDefault();
      var allAlbums = $('.card__panel')[0];
      $(allAlbums).remove();
      $(this).parents('.card__panel').attr('class', 'col s12 albums-expanded');
 
 
-     $('.albums-expanded').html('');
+     $('.albums-expanded').html('').css('background-color', 'white');
     //  console.log(albumResults);
     // console.log(artistResults);
 
      var albumsHeader = $('<div>').addClass('panel__head');
      var albums = $('<div>').addClass('theme').html('Albums');
-    //  var seeAllArtists = $('<a>').addClass('more valign-wrapper all-albums').attr('href', '#').text('See all albums');
+     var backAlbums = $('<a>').addClass('more valign-wrapper back-albums').attr('href', '#').text('Back');
      // $(albumsContainer).append(albumsHeader);
-     $(albumsHeader).append($(albums));
+     $(albumsHeader).append(albums).append(backAlbums);
      var albumResultContainer = $('<div>').addClass('photos');
      //below is all to be created in a loop through the search results.
-     for(var i = 0; i < 20; i++){
+     if(albumResults.length >= 20){
+      var albumCount = 20;
+     }
+     else{
+       var albumCount = albumResults.length;
+     }
+
+     for(var i = 0; i < albumCount; i++){
 
        var photoElement = $('<div>').addClass('photos__elem center-align album').attr('album_title', albumResults[i]['title']).attr('album-id', albumResults[i]['id']);;
        var imageWrapper = $('<div>').addClass('img-wrapper');
@@ -571,6 +594,147 @@ function randomPhrase() {
      }
      $('.albums-expanded').append(albumsHeader).append(albumResultContainer);
      $('.photos__elem').css('width', '8.5%');
+     var panel =  $('.panel__head')[0];
+     $(panel).css('padding', '5px 0px');
+   })
+
+   $('body').delegate('.all-tracks', 'click', function(e){
+     e.preventDefault();
+     for(var i=5; i < trackResults.length; i++){
+       var tr = $('<tr>').addClass('suggest_song1').attr('song_id', trackResults[i]['id']).attr('song_name', trackResults[i]['title']).attr('artist', trackResults[i]["artist"]["name"]);
+       var td = $('<td>');
+       $(td).append($('<i>').addClass('material-icons left').text('add'));
+       var name_td = $('<td>').text(trackResults[i]['title']);
+       var artist_td = $('<td>').text(trackResults[i]['artist']['name']);
+       var album_td = $('<td>').text(trackResults[i]['album']['title']);
+       var duration_td = $('<td>').addClass('hide-on-small-only').text(secToMin(trackResults[i]['duration']));
+
+       var coverart_td = $('<td>').addClass('cover-art').attr('style', 'padding-left: 100px;');
+       var coverArtDiv = $('<div>').addClass('img-wrapper');
+       var coverArt = $('<img>').addClass('circle track-art').attr('src', trackResults[i]['album']['cover_medium']);
+       $(coverart_td).append($(coverArtDiv).append(coverArt));
+
+       $(tr).append(td).append(name_td).append(artist_td).append(album_td).append(duration_td).append(coverart_td);
+       $('.table > tbody').append($(tr));
+     }
+    $('.all-tracks').text('Back').addClass('back-tracks');
+   })
+
+   //secondary solution to make app more optimized: Every time all artists or all albums is clicked, make another modal window just like the current one, but with a higher z-index. Loop all the artist or
+   //album results followed by the track results. Clicking back now, will just switch the z-indices of these two windows. No need to make call again to show results that already exist in the other window.
+   $('body').delegate('.back-albums, .back-artists, .back-tracks', 'click', function(e){
+     e.preventDefault();
+     var albumsLength = albumResults.length;
+     // console.log(albumsLength);
+
+     var artistsLength = artistResults.length;
+     // console.log(artistsLength);
+
+     if (albumsLength < 5) {
+       var i_albumsLength = albumsLength;
+     }
+     else {
+       var i_albumsLength = 5;
+     }
+
+     if (artistsLength < 5) {
+       var i_artistsLength = artistsLength;
+     }
+     else {
+       var i_artistsLength = 5;
+     }
+     $('#search_results').html('');
+     // Creating row div which contains artists, albums and tracks.
+     var row = $('<div>').addClass('row');
+     //adding row to .main-content, which is the overall container.
+     $('.main-content').append(row);
+
+     //adding albums acc to new designs
+     var artistsContainer = $('<div>').addClass('col s6 card__panel');
+
+     // var artistsContainer = $('<div>').attr('id', 'search_results_artists');
+     var artistsHeader = $('<div>').addClass('panel__head');
+     var artists = $('<div>').addClass('theme').html('Artists');
+     var seeAllArtists = $('<a>').addClass('more valign-wrapper all-artists').attr('href', '#').text('See all artists');
+     // $(artistsContainer).append(artistsHeader);
+     var artistResultContainer = $('<div>').addClass('photos');
+     //below is all to be created in a loop through the search results.
+     for(var i = 0; i < i_artistsLength; i++){
+
+       var photoElement = $('<div>').addClass('photos__elem center-align artist').attr('artist-name', artistResults[i]['name']).attr('artist-id', artistResults[i]['id']);;
+       var imageWrapper = $('<div>').addClass('img-wrapper');
+       var artistImg = $('<img>').addClass('circle').attr('src', artistResults[i]["picture_medium"]);
+       var artistName = $('<h6>').addClass('photos__h6').text(artistResults[i]['name']);
+       $(artistResultContainer).append($(photoElement).append($(imageWrapper).append(artistImg)).append(artistName));
+     }
+     $(row).append($(artistsContainer).append($(artistsHeader).append(artists).append(seeAllArtists)).append(artistResultContainer));
+
+     //adding albums acc to new designs
+     var albumsContainer = $('<div>').addClass('col s6 card__panel');
+
+     // var albumsContainer = $('<div>').attr('id', 'search_results_albums');
+     var albumsHeader = $('<div>').addClass('panel__head');
+     var albums = $('<div>').addClass('theme').html('Albums');
+     var seeAllAlbums = $('<a>').addClass('more valign-wrapper all-albums').attr('href', '#').text('See all albums');
+     // $(albumsContainer).append(albumsHeader);
+     var albumResultContainer = $('<div>').addClass('photos');
+     //below is all to be created in a loop through the search results.
+     for(var i = 0; i < i_albumsLength; i++){
+
+       var photoElement = $('<div>').addClass('photos__elem center-align album').attr('album_title', albumResults[i]['title']).attr('album-id', albumResults[i]['id']);;
+       var imageWrapper = $('<div>').addClass('img-wrapper');
+       var albumImg = $('<img>').addClass('circle').attr('src', albumResults[i]["cover_medium"]);
+       var albumName = $('<h6>').addClass('photos__h6').text(albumResults[i]['title']);
+       $(albumResultContainer).append($(photoElement).append($(imageWrapper).append(albumImg)).append(albumName));
+     }
+     $(row).append($(albumsContainer).append($(albumsHeader).append(albums).append(seeAllAlbums)).append(albumResultContainer));
+     // $('.main-content').append(row);
+
+     //adding tracks
+     var tracksContainer = $('<div>').addClass('col s12 card__panel').attr('id', 'table');
+
+     var tracksHeader = $('<div>').addClass('panel__head');
+     var tracks = $('<div>').addClass('theme').html('Songs');
+     var seeAllTracks = $('<a>').addClass('more valign-wrapper all-tracks').attr('href', '#').text('See all songs');
+
+     $(tracksHeader).append(tracks).append(seeAllTracks);
+
+     var tracksTable = $('<table>').addClass('bordered highlight table');
+
+     var tracksHead = $('<thead>');
+     var tr = $('<tr>');
+     var th = $('<th>').addClass('add');
+     var th1 = $('<th>').text('Title');
+     var th2 = $('<th>').text('Artist');
+     var th3 = $('<th>').text('Albums');
+     var th4 = $('<th>').addClass('hide-on-small-only').text('Time');
+     var th5 = $('<th>').text('Cover Art').attr('style', 'padding-left: 100px;');
+     $(tracksHead).append($(tr).append(th).append(th1).append(th2).append(th3).append(th4).append(th5));
+
+     var tracksBody = $('<tbody>');
+
+     for(var i=0; i < 5; i++){
+       var tr = $('<tr>').addClass('suggest_song1').attr('song_id', trackResults[i]['id']).attr('song_name', trackResults[i]['title']).attr('artist', trackResults[i]["artist"]["name"]);
+       var td = $('<td>');
+       $(td).append($('<i>').addClass('material-icons left').text('add'));
+       var name_td = $('<td>').text(trackResults[i]['title']);
+       var artist_td = $('<td>').text(trackResults[i]['artist']['name']);
+       var album_td = $('<td>').text(trackResults[i]['album']['title']);
+       var duration_td = $('<td>').addClass('hide-on-small-only').text(secToMin(trackResults[i]['duration']));
+
+       var coverart_td = $('<td>').addClass('cover-art').attr('style', 'padding-left: 100px;');
+       var coverArtDiv = $('<div>').addClass('img-wrapper');
+       var coverArt = $('<img>').addClass('circle track-art').attr('src', trackResults[i]['album']['cover_medium']);
+       $(coverart_td).append($(coverArtDiv).append(coverArt));
+
+       $(tr).append(td).append(name_td).append(artist_td).append(album_td).append(duration_td).append(coverart_td);
+       $(tracksBody).append($(tr));
+     }
+     $(tracksTable).append(tracksHead).append(tracksBody);
+
+     $(tracksContainer).append(tracksHeader).append(tracksTable);
+
+     $(row).append(tracksContainer);
    })
 
    var backButton = $('<a>').addClass('back-button').addClass('waves-effect waves-light btn light-blue lighten-2').html('BACK TO SEARCH RESULTS');
