@@ -54,7 +54,7 @@
  }
 
  .wrapper-create {
-   min-height: 110%;
+   min-height: 105%;
    background: url("/assets/headerBG2.jpg") center center no-repeat;
    background-size: cover;
  }
@@ -348,9 +348,8 @@ h2{
               height: 40px;
               line-height: 40px;
               font-size: 14px;
-              border-radius: 100px;
               border: 1px solid rgba(255, 255, 255, 0);
-              transition-duration: 0.5s !important;
+              transition-duration: 0.4s !important;
               &:hover{
                 border: 1px solid rgba(255, 255, 255, 0.5);
                 background: transparent;
