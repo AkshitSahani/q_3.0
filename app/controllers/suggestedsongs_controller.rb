@@ -8,8 +8,8 @@ class SuggestedsongsController < ApplicationController
    @votes = Vote.get_votes(params[:playlist_id])
    @playlist = Playlist.find(params[:playlist_id])
 
-   access = Authorization.find_by(playlist_id: params[:playlist_id], user_id: session[:user_id]).status
-   guest_song_count = SuggestedSong.where(playlist_id: params[:playlist_id], user_id: session[:user_id]).count
+   access = Authorization.find_by(playlist_id: params[:playlist_id], user_id: session[:active_id]).status
+   guest_song_count = SuggestedSong.where(playlist_id: params[:playlist_id], user_id: session[:active_id]).count
    playlist_limit = Playlist.find(params[:playlist_id]).song_limit
 
    if access == "Guest"
@@ -19,7 +19,7 @@ class SuggestedsongsController < ApplicationController
       @songs_before = SuggestedSong.playlist_songs(params[:playlist_id])
 
       if @songs_before.where(status: "played").length == @songs_before.length
-          @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:user_id], user_name: User.find(session[:user_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
+          @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:active_id], user_name: TempUser.find(session[:active_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
          if SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id]).count > 0 &&
           (SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id])).last.status != "played"
           render json: {message: "Track is already Q'd up", status: false}
@@ -32,7 +32,7 @@ class SuggestedsongsController < ApplicationController
 
       else
 
-        @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:user_id], user_name: User.find(session[:user_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
+        @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:active_id], user_name: TempUser.find(session[:active_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
 
         if SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id]).count > 0 &&
           (SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id])).last.status != "played"
@@ -57,7 +57,7 @@ class SuggestedsongsController < ApplicationController
    @songs_before = SuggestedSong.playlist_songs(params[:playlist_id])
 
    if @songs_before.where(status: "played").length == @songs_before.length
-       @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:user_id], user_name: User.find(session[:user_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
+       @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:active_id], user_name: TempUser.find(session[:active_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
       if SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id]).count > 0 &&
        (SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id])).last.status != "played"
        render json: {message: "Track is already Q'd up", status: false}
@@ -70,7 +70,7 @@ class SuggestedsongsController < ApplicationController
 
    else
 
-     @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:user_id], user_name: User.find(session[:user_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
+     @suggested_song = SuggestedSong.new(song_id: params[:song_id], user_id: session[:active_id], user_name: TempUser.find(session[:active_id]).first_name, playlist_id: params[:playlist_id], name: params[:name], artist: params[:artist], status: "que")
 
      if SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id]).count > 0 &&
        (SuggestedSong.where(playlist_id: params[:playlist_id], song_id: params[:song_id])).last.status != "played"

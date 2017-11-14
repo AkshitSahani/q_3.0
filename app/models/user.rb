@@ -21,6 +21,8 @@ class User < ApplicationRecord
       user.first_name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      tempuser = TempUser.create(first_name: auth.info.name)
+      user.tempuserid = tempuser.id
       user.save!
     end
   end

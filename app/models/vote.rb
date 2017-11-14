@@ -1,6 +1,7 @@
 class Vote < ApplicationRecord
   belongs_to :suggested_song, class_name: 'SuggestedSong', foreign_key: 'suggestedsong_id'
-  belongs_to :user
+  belongs_to :user, optional: true
+  belongs_to :temp_user, optional: true
 
   def self.get_votes(playlist_id)
     # songs = SuggestedSong.where(playlist_id: playlist_id)
