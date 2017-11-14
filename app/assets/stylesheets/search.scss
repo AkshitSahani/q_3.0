@@ -58,6 +58,22 @@ input:-ms-input-placeholder {
   background: linear-gradient(to right, #f44295, #cc2cb4);
   border-radius: 50px;
 }
+
+.back-container{
+  width: 100%;
+  text-align: right;
+  padding-top: 10px;
+}
+
+.back-to-playlist{
+  font-size: 1.3rem !important;
+  margin: 0px 20px;
+}
+
+.suggest_song1{
+  cursor: pointer;
+}
+
 .main-content {
   padding: 0px 15px;
   background-color: #efefef;
@@ -75,7 +91,7 @@ input:-ms-input-placeholder {
   width: 48% !important;
   margin: 1%;
   box-shadow: 0px 0px 4px #cccccc;
-  margin-top: 25px;
+  // margin-top: 25px;
   background-color: white;
   border-radius: 5px;
   padding: 20px 15px !important;

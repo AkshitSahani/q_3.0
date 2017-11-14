@@ -79,7 +79,6 @@
   <div class="search-container hidden">
     <section class="search">
 
-      <a class="hidden back waves-effect waves-light btn pink darken-1">Back to playlist</a>
 
       <!-- <button class="back">Back to playlist</button> -->
       <%# form_tag  playlist_suggestedsongs_path(params[:id]), method: "get" do |f| %>
@@ -89,7 +88,9 @@
         <!-- </div> -->
       <%# end %>
 
-      <div id="search_results" class="main-content"></div>
+      <div id="search_results" class="main-content">
+        <!-- <a class="hidden back waves-effect waves-light btn pink darken-1">Back</a> -->
+      </div>
     </section>
     </div>
 
@@ -210,3 +211,4 @@
 </div>
     <% end %>
   <% end %>
+  <div class="back2top"><button>^^</button></div>

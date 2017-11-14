@@ -17,6 +17,12 @@ $info_text:#f1469c;
   color: black;
 }
 
+.back2top{
+  z-index: 10000;
+  text-align: right;
+  padding-right: 25px;
+}
+
 .song-listing{
   line-height: 2.5rem;
   font-size: 20px;
@@ -171,13 +177,13 @@ img.track-img {
 .search-container {
   width: 100%;
   position: absolute;
-  border-right: 1px black solid;
-  border-left:  1px black solid;
+  // border-right: 1px black solid;
+  // border-left:  1px black solid;
   display: inherit;
   z-index: 3;
   background-color: rgba(0,0,0,0.8);
   // color: white;
-  left: 2%;
+  // left: 2%;
 }
 
 .search-submit input[type="submit"] {
@@ -693,7 +699,7 @@ button.downvote.btn.darken-2 {
   }
 
  .search-container {
-   width: 96%;
+   width: 100%;
  }
 
  #playlist-title {
