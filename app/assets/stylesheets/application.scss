@@ -179,6 +179,10 @@ textarea.materialize-textarea {
   transition: all 0.3s;
 }
 
+#access_code {
+  text-align: center;
+}
+
 #playlist_name:hover,
 #playlist_description:hover {
   border-bottom: 1px solid rgb(175, 175, 175);
