@@ -181,7 +181,7 @@
         width: 163px;
         background: #b336dd;
         color: white;
-        border: 2px solid linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+        // border: 2px solid linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
         transition: 0.2s ease-out;
         @media (max-width:600px){
           float: right;
@@ -209,7 +209,7 @@
           // border-radius: 100px;
           content: "";
           display: block;
-          background: linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+          // background: linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
           @media (max-width: 600px){
             border-radius: 0;
           }
