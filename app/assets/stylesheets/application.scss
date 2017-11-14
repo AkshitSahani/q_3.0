@@ -168,6 +168,24 @@ textarea.materialize-textarea {
   box-sizing: border-box;
 }
 
+/* Text inputs */
+input:not([type]):hover,
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=email]:hover,
+input[type=url]:hover,
+input[type=time]:hover,
+input[type=date]:hover,
+input[type=datetime]:hover,
+input[type=datetime-local]:hover,
+input[type=tel]:hover,
+input[type=number]:hover,
+input[type=search]:hover,
+textarea.materialize-textarea:hover {
+  border: 1px solid rgb(175, 175, 175);
+
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #b0b0b0;
 }
