@@ -19,7 +19,6 @@ class UsersController < ApplicationController
       tempuser = TempUser.create(params.require(:user).permit(:first_name))
       @user = User.new(user_params)
       @user.update_attribute('tempuserid', tempuser.id)
-      byebug
       if @user.save
         session[:user_id] = @user.id
         session[:active_id] = @user.tempuserid

@@ -115,6 +115,7 @@ label {
 
 .field {
     color: white;
+    margin-top: 1rem;
 }
 
 .dropdown {
@@ -245,7 +246,7 @@ button.btn.login-session#joinpage-button:hover {
 }
 
 .title {
-  color: #60585e;
+  color: #4b464a;
   margin: 0.5rem;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 45px;
@@ -304,7 +305,7 @@ h5 {
 }
 
 .input-field input {
-  border-bottom: 1px solid #b7b7b7 !important;
+  // border-bottom: 1px solid #b7b7b7 !important;
 }
 
 .field label {
@@ -312,7 +313,7 @@ h5 {
 }
 
 .field input {
-  color: #60585e !important;
+  color: #4b464a !important;
 }
 
 .or-form {

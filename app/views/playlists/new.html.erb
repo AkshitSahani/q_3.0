@@ -17,12 +17,10 @@
       <%= f.text_field :description, :placeholder => "Description" %> <br />
     </div>
     <div class="field">
-      <%= f.label :theme %>
       <%= f.select(:theme, @themes, {:prompt => "Select a Theme"}, { :class => 'browser-default dropdown' }) %> <br />
     </div>
     <div class="field">
-      <%= f.label :guest_song_limit %>
-      <%= f.select(:song_limit, @song_limits, {}, { :class => 'browser-default dropdown' }) %> <br />
+      <%= f.select(:song_limit, @song_limits, {:prompt => "Select Song Limit"}, { :class => 'browser-default dropdown' }) %> <br />
     </div>
 
 
