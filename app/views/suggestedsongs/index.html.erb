@@ -32,7 +32,7 @@
     <h1>Tracks</h1>
     <% @tracks["data"].each do |track| %>
       <div>
-        <div data-playlist-id=<%=params[:playlist_id]%> data-user-id=<%=session[:user_id]%> name= <%= track["id"]%> > <%= track["title"] %> </div>
+        <div data-playlist-id=<%=params[:playlist_id]%> data-user-id=<%=session[:active_id]%> name= <%= track["id"]%> > <%= track["title"] %> </div>
         <button class="suggest_song"> Add </button>
       </div>
     <% end %>

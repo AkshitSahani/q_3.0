@@ -21,7 +21,7 @@
   <% @songs.each do |song| %>
     <div class="song-in-queue que public-que" data-playlist-id=<%=@playlist_q.id%> data-suggested-song-id=<%= song.id %>>
     <%= song.name %> - <%= song.artist %><br/>
-    <span class="added-by">Added By: <%= User.find(song.user_id).first_name %></span>
+    <span class="added-by">Added By: <%= TempUser.find(song.user_id).first_name %></span>
 
     <span class="heart"><span class="netvote" id=<%=song.id%>><%= song.net_vote %></span>&nbsp<i class="fa fa-heart" style="font-size:12px"></i></span>
     </div> <!-- ends the song div -->
