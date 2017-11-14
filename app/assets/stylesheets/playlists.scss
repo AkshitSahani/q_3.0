@@ -755,6 +755,12 @@ button.downvote.btn.darken-2 {
  }
 }
 
+@media (min-width: 1300px) {
+  .login-form, .join-form, .party-form, .sign-up-form{
+    width: 50%;
+  }
+}
+
 
 
 html{
