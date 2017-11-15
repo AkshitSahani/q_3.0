@@ -3,8 +3,7 @@
 
 <%= form_tag(add_guest_path) %>
 <div class="field input-field">
-<%= label_tag("access_code") %>
-<%= text_field_tag "access_code" %>
+<%= text_field_tag "access_code", nil, :placeholder => 'Access Code' %>
 </div>
 <button class="btn login-session" id="joinpage-button" type="submit" name="action">Join
 </button>

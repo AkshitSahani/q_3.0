@@ -1,5 +1,5 @@
 <div class="sign-up-form">
-  <h1 class="title">SIGN UP</h1>
+  <h1 class="title">CREATE AN ACCOUNT</h1>
   <%= form_for @user do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
@@ -11,25 +11,26 @@
       </div>
     <% end %>
     <div class="field input-field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name %>
+      <!-- <%= f.label :first_name %><br /> -->
+      <%= f.text_field :first_name, :placeholder => "First Name" %>
+      <%= f.text_field :last_name, :placeholder => "Last Name" %>
     </div>
     <div class="field input-field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name %>
+      <!-- <%= f.label :email %><br /> -->
+      <%= f.text_field :email, :placeholder => "Email" %>
     </div>
     <div class="field input-field">
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
+      <!-- <%= f.label :password %><br /> -->
+      <%= f.password_field :password, :placeholder => "Password" %>
     </div>
     <div class="field input-field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <!-- <%= f.label :password_confirmation %><br /> -->
+      <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
     </div>
-    <div class="field input-field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+    <button class="btn login-session" id="sign-up-button" type="submit" name="action">Let's Party</button>
+    <div class="or-form">
+      <strong class='or-form-text'>OR</strong>
     </div>
-    <button class="btn login-session" id="sign-up-button" type="submit" name="action">Sign Up</button>
+    <button class="btn login-session" id="facebook-button" type="submit" name="action">SIGN UP WITH FACEBOOK</button>
 </div>
 <% end %>

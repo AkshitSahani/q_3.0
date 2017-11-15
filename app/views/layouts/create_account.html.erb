@@ -12,9 +12,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="main-body">
+  <body class="login-background">
 
-  <div class="wrapper">
+    <div class="wrapper-create">
 
 
     <nav class='nav_bar'>
@@ -22,7 +22,7 @@
           <%= image_tag("Q.png") %>
         <% end %>
       <p class="user_info">
-        <% if current_user && session[:user_type] != "temp" %>
+        <% if current_user %>
 
         <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
 
@@ -34,16 +34,31 @@
     </nav>
 
     <!-- error messages for any flash notices or alerts anywhere -->
-      <!-- ERROR MESSAGES IN ERROR.md -->
+        <% if flash.now[:alert] && flash.now[:alert].class == Array %>
+        <ul>
+          <% flash.now[:alert].each do |error| %>
+            <li id="alert"><%= error %></li>
+          <% end %>
+        </ul>
+        <% elsif flash.now[:alert] %>
+        <p id="alert"><%= flash.now[:alert] %></p>
+        <% end %>
+
+        <% if flash.now[:notice] && flash.now[:notice].class == Array %>
+        <ul>
+        <% flash.now[:notice].each do |notice| %>
+            <li id="notice"><%= notice%></li>
+          <% end %>
+        </ul>
+        <% elsif flash.now[:notice] %>
+        <p id="notice"><%= flash.now[:notice] %></p>
+        <% end %>
+
       <div class="container">
 
     <%= yield %>
 
     </div>
-    <footer>
-      <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
-    </footer>
-  </div>
   </body>
-
+</div>
 </html>

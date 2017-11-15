@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 
   root 'sessions#frontpage'
   resources :sessions, only: [:new, :create, :destroy]
-  get '/sessions/view/:id', to: 'sessions#view', as: 'view_public_playlist' 
 
+  get 'auth/:provider/callback', to: 'sessions#create', as: "facebook_login"
+  get 'auth/failure', to: redirect('/')
+
+  get '/join', to: redirect('/playlists/join'), as: 'join_playlist'
+
+  get '/sessions/view/:id', to: 'sessions#view', as: 'view_public_playlist'
   get '/playlists/:id/playlist_broadcast', to: 'playlists#playlist_broadcast', as: 'playlist_broadcast'
   get '/playlists/:id/next_song', to: 'playlists#next_song', as: 'next_song'
   get '/playlists/:id/guestlist', to: 'playlists#guestlist', as: 'guestlist'
@@ -19,6 +24,8 @@ Rails.application.routes.draw do
   post 'playlists/:id/update_authorization', to: 'playlists#update_authorization', as: 'update_authorization'
   post '/playlists/:id/update_publicity', to: 'playlists#update_publicity', as: 'update_publicity'
   get '/playlists/search', to: 'search#index'
+  get '/playlists/name', to: 'playlists#name', as: 'temp_user'
+  post '/playlists/createname', to: 'playlists#create_name', as: 'create_name'
 
   mount ActionCable.server => '/cable'
   get '/auth/deezer/callback', to: 'sessions#frontpage'

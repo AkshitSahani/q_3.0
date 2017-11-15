@@ -43,7 +43,55 @@
  .wrapper-signup {
    min-height: 160%;
    position: relative;
+  //  background-color: #efefef;
  }
+
+ .wrapper-login {
+   min-height: 100%;
+   background-color: #efefef;
+   background: url("/assets/whatIsQBg1.jpg") center center no-repeat;
+   background-size: cover;
+ }
+
+ .wrapper-create {
+   min-height: 110%;
+   background: url("/assets/headerBG2.jpg") center center no-repeat;
+   background-size: cover;
+ }
+ .wrapper-create-playlist {
+   position: relative;
+ }
+
+ .create-playlist-main-body {
+   background: none;
+   height: 0;
+ }
+
+ .loader {
+   border: 10px solid #f3f3f3;
+   border-top: 10px solid #9b2b99;
+   border-radius: 50%;
+   width: 70px;
+   height: 70px;
+   animation: spin 2s linear infinite;
+   margin: 25% auto 0 auto;
+}
+
+.loader-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 29, 29, 0.67);
+  text-align: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 
 .front-footer {
@@ -69,6 +117,83 @@
 
 form {
   border-radius: 100px;
+  margin: 40px 30px 30px 30px;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border: 1px solid #f1469c !important;
+  box-shadow: none;
+}
+
+/* Text inputs */
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea.materialize-textarea {
+  background-color: rgba(199, 199, 199, 0.13);
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  outline: none;
+  height: 2.8rem;
+  width: 100%;
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  padding: 15px;
+  box-shadow: none;
+  transition: all 0.3s;
+  font-family: "Roboto Condensed", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Text inputs */
+input:not([type]):hover,
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=email]:hover,
+input[type=url]:hover,
+input[type=time]:hover,
+input[type=date]:hover,
+input[type=datetime]:hover,
+input[type=datetime-local]:hover,
+input[type=tel]:hover,
+input[type=number]:hover,
+input[type=search]:hover,
+textarea.materialize-textarea:hover {
+  border: 1px solid rgb(175, 175, 175);
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #b0b0b0;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #b0b0b0;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #b0b0b0;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #b0b0b0;
 }
 
 img {
@@ -106,7 +231,6 @@ h1{
   font-family: "Montserrat-Bold";
   font-size: 80px;
   color: white;
-  letter-spacing: 5px;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -252,11 +376,11 @@ h2{
               height: 40px;
               line-height: 40px;
               font-size: 14px;
-              border-radius: 100px;
               border: 1px solid rgba(255, 255, 255, 0);
-              transition-duration: 0.5s !important;
+              transition-duration: 0.4s !important;
               &:hover{
                 border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 5px;
                 background: transparent;
               }
             }

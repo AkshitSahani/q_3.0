@@ -41,8 +41,8 @@
         </figcaption>
       </figure>
       <div class="links">
-        <%= link_to "Host a Party", new_playlist_path, class: 'purpleButton' %>
-        <%= link_to "Join a Party", join_path, class: 'transparentButton' %>
+        <%= link_to "HOST PARTY", new_playlist_path, class: 'purpleButton' %>
+        <%= link_to "JOIN PARTY", join_path, class: 'transparentButton' %>
       </div>
     </div>
   </section>
@@ -157,7 +157,12 @@
   <!-- <script type="text/javascript" src="scripts.js"></script> -->
 </div>
 
+<div class="hostLoadDiv" style="display: none">
+</div>
 
+<div class="loader-div" style="display:none">
+  <div class="loader"></div>
+</div>
 
 <!-- <div class="buttons-user party-buttons">
   <div><%= link_to "Host a Party", new_playlist_path, class: 'btn parties host-button' %></div>

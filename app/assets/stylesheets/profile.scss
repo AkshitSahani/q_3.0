@@ -26,7 +26,7 @@
         bottom: 0 !important;
         transform: none;
         img{
-          
+
         }
       }
       .button-collapse{
@@ -140,13 +140,18 @@
       *{
         width: 165px;
         height: 40px;
-        border-radius: 100px;
+        // border-radius: 100px;
         font-size: 13px;
         display: inline-block;
         text-align: center;
         line-height: 40px;
         margin-right: 10px;
         margin-left: 10px;
+        transition: 0.2s ease-out;
+        font-family: "Roboto Condensed", "sans-serif";
+        letter-spacing: 1.5px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
         @media (max-width: 600px){
           border-radius: 0;
           margin-right: auto;
@@ -155,7 +160,7 @@
       }
       a:nth-of-type(1){
         color: white;
-        background: linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+        background: #f1469c;
         @media (max-width:600px){
           float: left;
         }
@@ -165,13 +170,20 @@
           float: none;
         }
       }
+      a:nth-of-type(1):hover{
+        background: #ff62b1;
+        transition: 0.2s ease-out;
+      }
+
       a:nth-of-type(2){
         top: 1px;
         position: relative;
         height: 38px;
         width: 163px;
-        background: white;
-        border: 2px solid linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+        background: #9648d2;
+        color: white;
+        // border: 2px solid linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+        transition: 0.2s ease-out;
         @media (max-width:600px){
           float: right;
         }
@@ -195,10 +207,10 @@
           margin: auto;
           width: 165px;
           height: 40px;
-          border-radius: 100px;
+          // border-radius: 100px;
           content: "";
           display: block;
-          background: linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
+          // background: linear-gradient(45deg, #df4b8f 20%, #8215a6 50%);
           @media (max-width: 600px){
             border-radius: 0;
           }
@@ -206,6 +218,10 @@
             width: 280px;
           }
         }
+      }
+      a:nth-of-type(2):hover{
+        background: #ac58ed;
+        transition: 0.2s ease-out;
       }
     }
   }
@@ -320,6 +336,7 @@
       padding-top: 20px;
       padding-bottom: 20px;
       border: 1px solid #e9e9f2;
+      transition: .2s ease-out;
       >.floatLeft{
         float: none;
       }
@@ -391,6 +408,10 @@
           }
         }
       }
+    }
+    .partyBlock:hover {
+      background: #f1f1f1;
+      transition: .2s ease-out;
     }
   }
 }

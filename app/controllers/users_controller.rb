@@ -8,15 +8,24 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => "create_account"
+
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
+    if User.where(email: user_params[:email], provider: "facebook").count > 0
+      redirect_to '/auth/facebook'
     else
-      render "new"
+      tempuser = TempUser.create(params.require(:user).permit(:first_name))
+      @user = User.new(user_params)
+      @user.update_attribute('tempuserid', tempuser.id)
+      if @user.save
+        session[:user_id] = @user.id
+        session[:active_id] = @user.tempuserid
+        redirect_to user_path(@user)
+      else
+        render "new"
+      end
     end
   end
 
@@ -25,13 +34,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    hosted_auths = Authorization.where(user_id: session[:user_id], status: "Host")
+    hosted_auths = Authorization.where(user_id: session[:active_id], status: "Host")
     @hosted = []
     hosted_auths.each do |auth|
       @hosted << auth.playlist if auth.playlist
     end
 
-    guest_auths = Authorization.where(user_id: session[:user_id], status: "Guest").or(Authorization.where(user_id: session[:user_id], status: "Forbidden"))
+    guest_auths = Authorization.where(user_id: session[:active_id], status: "Guest").or(Authorization.where(user_id: session[:active_id], status: "Forbidden"))
     @guest = []
     guest_auths.each do |auth|
       @guest << auth.playlist if auth.playlist
@@ -42,5 +51,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
+
 
 end

@@ -103,6 +103,29 @@ $(document).on("ready", function(){
        })
      });
    });
+
+   $('.purpleButton').on('click', function(e) {
+    e.preventDefault();
+    $('.loader-div').css('display', 'block');
+    $.ajax({
+        type: "GET",
+        url: "/playlists/new",
+        success: function(data){
+            $('.loader-div').css('display', 'none');
+            $('.hostLoadDiv').html(data).css("display", "block");
+        }
+    });
+   })
+
+   $(document).on('click', '.form-close', function(){
+     $('.hostLoadDiv').css('display', 'none');
+   });
+
+   $(document).keyup(function(e) {
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+      $('.hostLoadDiv').css('display', 'none');
+    }
+});
 });
 
 

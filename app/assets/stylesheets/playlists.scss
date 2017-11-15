@@ -227,14 +227,14 @@ input#search {
 }
 
 .add-search-container a {
-  width: 100%;
+  width: 116%;
   background-image: linear-gradient(to top, $right_gradient, $left_gradient);
   color:white;
   padding-top:1.1rem;
   padding-bottom:1.1rem;
   font-size:1.1rem;
   display:inline-block;
-
+  margin-left: -8%;
 }
 .add-search-container a:hover {
 
@@ -301,6 +301,10 @@ input#search {
 .main-body {
   background: white/* url('https://static.pexels.com/photos/195280/pexels-photo-195280.jpeg') center center fixed no-repeat*/;
   background-size: cover;
+}
+
+#join-body {
+  background: linear-gradient(to bottom right, #f44295, #761390);
 }
 
 #playlist-update-title, #join-title {
@@ -398,7 +402,6 @@ button.downvote.btn.darken-2 {
 .user_info {
   float: right;
     padding-right: 20px;
-    margin: 0px;
     line-height: 25px;
     vertical-align:top;
 
@@ -497,16 +500,21 @@ button.downvote.btn.darken-2 {
   color: white;
 }
 
+.form-close {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  color: rgba(96, 88, 94, 0.34);
+  cursor: pointer;
+}
+
 
 
 
 @media (min-width: 0px) and (max-width: 599px) {
  .q-instructions, .q-description {
    padding: 2rem 3rem;
- }
-
- #playlist-title {
-   font-size: 46px;
  }
 
  .viewable-screen-front {
@@ -586,10 +594,6 @@ button.downvote.btn.darken-2 {
    width: 84.95%;
  }
 
- #playlist-title {
-   font-size: 60px;
- }
-
  .viewable-screen-front {
    height: 64vh;
  }
@@ -603,7 +607,7 @@ button.downvote.btn.darken-2 {
  }
 
  .login-form, .join-form, .party-form, .sign-up-form{
-   width: 50%;
+   width: 80%;
    margin-bottom: 10px;
    margin: auto;
    margin-top: 7rem;
@@ -702,16 +706,12 @@ button.downvote.btn.darken-2 {
    width: 100%;
  }
 
- #playlist-title {
-   font-size: 60px;
- }
-
  .viewable-screen-front {
    height: 64vh;
  }
 
  .login-form, .join-form, .party-form, .sign-up-form{
-   width: 50%;
+   width: 65%;
    margin-bottom: 10px;
    margin: auto;
    margin-top: 7rem;
@@ -762,6 +762,12 @@ button.downvote.btn.darken-2 {
  .q-instructions, .q-description {
    padding: 4rem 12rem;
  }
+}
+
+@media (min-width: 1300px) {
+  .login-form, .join-form, .party-form, .sign-up-form{
+    width: 50%;
+  }
 }
 
 
@@ -904,7 +910,7 @@ li.guest{
         padding: 5px 10px;
     display: inline-block;
      transition: backgorund-image .2s linear;
-     margin-left:1rem;
+     margin-left:0.5rem;
 }
 .toggle_button>i.fa-check{
   display:none;
@@ -1000,7 +1006,8 @@ li.guest{
   }
   .playlist-details-title{
     text-align: left;
-
+    line-height: 3px;
+    margin-left: 33%;
   }
   .playlist-host{
       padding-left: 0;
@@ -1012,10 +1019,13 @@ li.guest{
     text-align: center;
     transform:none;
     left:0;
+    margin-left: 30%;
+    margin-bottom: 5%;
   }
 .make_public_wrapper{
   float:none;
   display: inline-block !important;
+  margin-left: 5%;
 }
   .hosteduser-playlist{
     text-align: left;
@@ -1077,6 +1087,7 @@ li.guest{
   #make-public {
     float: none;
     text-align:left;
+    margin-bottom: -7%;
   }
 
   .playlist-name {
@@ -1092,16 +1103,14 @@ li.guest{
 
   //vote
   .buttons {
-        float: right;
-    width: 100px;
+    float: right;
+    width: 115px;
     display:flex;
     flex-wrap:wrap;
-    align-items:center;
+    align-items:flex-end;
     /* font-size: 5px; */
     top: 0;
-    right:0;
-
-
+    // right:0;
   }
   .buttons *{
     flex-grow:1;
@@ -1131,7 +1140,9 @@ li.guest{
   }
 
   .delete-song i {
-     font-size:1.5rem;
+     font-size:1.7rem;
+     margin-left: 5px;
+     margin-right: -6rem;
   }
   .thumb_btn{
     padding:0.15rem 0.4rem;
@@ -1156,7 +1167,7 @@ li.guest{
   }
 
   .song-in-queue.played, .song-in-queue.playing {
-    height: 5rem;
+    height: 6rem;
   }
 
   // 4 Star Playlists
@@ -1179,6 +1190,56 @@ li.guest{
   // }
 }
 
+
 .track-art{
   width: 50px !important;
+}
+
+@media screen and (min-width: 480px) and (max-width: 800px){
+  .playlist-code{
+    border: 1px solid #e1dde8;
+    border-radius: 39px;
+    font-size: 13px;
+    padding: 10px;
+    display: inline-block;
+    margin: auto auto;
+    color: #444444;
+    position: absolute;
+    left: 32%;
+    transform: translateX(-50%);
+  }
+
+  .guestlist-playlist {
+    float: right;
+    opacity: 0.85;
+    margin: 0.25rem;
+    margin-top: 0.65rem;
+  }
+
+  .heart {
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
+
+  .make_public_wrapper{
+    float: right;
+    opacity: 0.85;
+    text-transform: capitalize;
+    margin: 0.25rem;
+    margin-right: -5px;
+  }
+
+  .delete_song_btn{
+    color: #f35058;
+    border: 1px solid #f35058;
+    text-transform: none;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+    padding: 0.1rem 2rem;
+  }
+
+}
+
+@media screen and (min-width: 375px) and (max-width: 600px){
+
 }

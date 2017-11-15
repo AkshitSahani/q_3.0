@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +14,7 @@
 
   <body class="login-background" id="login-body">
 
-    <div class="wrapper">
+    <div class="wrapper-login">
 
 
     <nav class='nav_bar'>
@@ -22,7 +22,7 @@
           <%= image_tag("Q.png") %>
         <% end %>
       <p class="user_info">
-        <% if current_user %>
+          <% if current_user && session[:user_type] != "temp" %>
 
         <%= link_to current_user.first_name, user_path(session[:user_id]) %><span class="nav-pipe"> | <span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
 
@@ -59,9 +59,6 @@
     <%= yield %>
 
     </div>
-    <footer id="login-footer">
-      <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
-    </footer>
   </div>
   </body>
 </html>

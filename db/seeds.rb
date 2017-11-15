@@ -12,21 +12,26 @@ SuggestedSong.destroy_all
 Authorization.destroy_all
 
 
+tempuserid = TempUser.create(first_name: "Bitmaker").id
 User.create!(
   first_name: "Bitmaker",
   last_name: "Labs",
   email: "bit@maker.com",
   password: "password",
   password_confirmation: "password",
+  tempuserid: tempuserid,
 )
 
 9.times do
+  first_name = Faker::Name.first_name
+  tempuser = TempUser.create(first_name: first_name)
   User.create!(
-    first_name: Faker::Name.first_name,
+    first_name: first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
     password: 'password',
     password_confirmation: 'password',
+    tempuserid: tempuser.id,
   )
 end
 
