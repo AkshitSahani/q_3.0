@@ -46,31 +46,52 @@
     <%= render :partial => "nextsong.js" %>
   </script>
   <% if @access == "Host" %>
-    <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a>
+
+  <div class="search">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% elsif (@playlist_q.public) && (@access == "Guest" || @access == "Viewer") %>
-  <div class="add-search-container">
-    <a class="add-search-button">Add A Song</a>
+  <div class="search">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% else %>
-  <div class="add-search-container hidden">
-    <a class="add-search-button">Add A Song</a>
+  <div class="search hidden">
+    <div class="search__inner">
+      <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+      <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+    </div>
+  </div>
   <% end %>
 </div>
+
+<!-- <div class="search">
+  <div class="search__inner">
+    <input  id="search" type="text" class="search__input" name="search" placeholder="Add songs">
+    <button id="btn-search" class="btn waves-effect waves-light search-submit">Search</button>
+  </div>
+</div> -->
 
   <div class="search-container hidden">
     <section class="search">
 
-      <a class="hidden back waves-effect waves-light btn pink darken-1">Back to playlist</a>
 
       <!-- <button class="back">Back to playlist</button> -->
-      <%= form_tag  playlist_suggestedsongs_path(params[:id]), method: "get" do |f| %>
-        <div class="field">
-          <%= text_field_tag :search, nil, placeholder:'Search Music' %>
-          <span class="search-submit"><%= submit_tag "Search" %></span>
-        </div>
-      <% end %>
+      <%# form_tag  playlist_suggestedsongs_path(params[:id]), method: "get" do |f| %>
+        <!-- <div class="field"> -->
+          <%# text_field_tag :search, nil, placeholder:'Search Music' %>
+          <!-- <span class="search-submit"><%= submit_tag "Search" %></span> -->
+        <!-- </div> -->
+      <%# end %>
 
-      <div id="search_results"></div>
+      <div id="search_results" class="main-content">
+        <!-- <a class="hidden back waves-effect waves-light btn pink darken-1">Back</a> -->
+      </div>
     </section>
     </div>
 
@@ -150,7 +171,9 @@
 
 
                 <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
+
                 <% if (TempUser.find(song.user_id).id == session[:active_id]) || @access == "Host" %>
+                  
                       <a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 <% end %>&nbsp
               </span>
@@ -191,3 +214,4 @@
 </div>
     <% end %>
   <% end %>
+  <div class="back2top"><button>^^</button></div>

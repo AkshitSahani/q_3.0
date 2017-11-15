@@ -17,6 +17,12 @@ $info_text:#f1469c;
   color: black;
 }
 
+.back2top{
+  z-index: 10000;
+  text-align: right;
+  padding-right: 25px;
+}
+
 .song-listing{
   line-height: 2.5rem;
   font-size: 20px;
@@ -169,14 +175,15 @@ img.track-img {
 }
 
 .search-container {
-  width: 90%;
+  width: 100%;
   position: absolute;
-  border-right: 1px black solid;
-  border-left:  1px black solid;
+  // border-right: 1px black solid;
+  // border-left:  1px black solid;
   display: inherit;
   z-index: 3;
   background-color: rgba(0,0,0,0.8);
-  color: white;
+  // color: white;
+  // left: 2%;
 }
 
 .search-submit input[type="submit"] {
@@ -192,9 +199,9 @@ img.track-img {
 }
 
 input#search {
-    padding-top: 9px;
-    padding-left: 14px;
-    width: 98.1%;
+    // padding-top: 9px;
+    // padding-left: 14px;
+    // width: 98.1%;
 }
 
 .search-submit input[type="submit"]:hover {
@@ -228,7 +235,6 @@ input#search {
   font-size:1.1rem;
   display:inline-block;
   margin-left: -8%;
-
 }
 .add-search-container a:hover {
 
@@ -697,7 +703,7 @@ button.downvote.btn.darken-2 {
   }
 
  .search-container {
-   width: 70%;
+   width: 100%;
  }
 
  .viewable-screen-front {
@@ -1002,7 +1008,6 @@ li.guest{
     text-align: left;
     line-height: 3px;
     margin-left: 33%;
-
   }
   .playlist-host{
       padding-left: 0;
@@ -1106,8 +1111,6 @@ li.guest{
     /* font-size: 5px; */
     top: 0;
     // right:0;
-
-
   }
   .buttons *{
     flex-grow:1;
@@ -1185,7 +1188,11 @@ li.guest{
   //   left: 39%;
   //   bottom: 9%;
   // }
+}
 
+
+.track-art{
+  width: 50px !important;
 }
 
 @media screen and (min-width: 480px) and (max-width: 800px){
