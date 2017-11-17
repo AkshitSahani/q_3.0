@@ -393,6 +393,8 @@ button.downvote.btn.darken-2 {
 .song-list {
   z-index: 1;
   background-color: white;
+  margin-left: auto;
+  margin-right: auto;
 };
 
 .added-by {
@@ -509,8 +511,28 @@ button.downvote.btn.darken-2 {
   cursor: pointer;
 }
 
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgba(88, 86, 86, 0.79);
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 5px;
+    transition: 0.2s ease-out;
+}
 
-
+#myBtn:hover {
+    background-color: #f1469c;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+}
 
 @media (min-width: 0px) and (max-width: 599px) {
  .q-instructions, .q-description {
@@ -640,6 +662,10 @@ button.downvote.btn.darken-2 {
   font-size: 12px;
   }
 
+  .song-list {
+    width: 85%;
+  }
+
   .song-listing{
     line-height: 2.5rem;
     font-size: 20px;
@@ -725,6 +751,10 @@ button.downvote.btn.darken-2 {
    display: inline-block;
    opacity: 0.7;
    position: relative;
+ }
+
+ .song-list {
+   width: 70%;
  }
 
  footer {
