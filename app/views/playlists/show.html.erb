@@ -173,7 +173,7 @@
                 <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
 
                 <% if (TempUser.find(song.user_id).id == session[:active_id]) || @access == "Host" %>
-                  
+
                       <a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 <% end %>&nbsp
               </span>
@@ -214,4 +214,5 @@
 </div>
     <% end %>
   <% end %>
-  <div class="back2top"><button>^^</button></div>
+  <!-- <div class="back2top"><button>^^</button></div> -->
+  <a id="myBtn" href="#target1"><i class="fa fa-arrow-up" aria-hidden="true"></i> &nbspBack to Top</a>
