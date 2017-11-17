@@ -155,6 +155,12 @@ input:-ms-input-placeholder {
   font-weight: light;
   color: #f44295;
 }
+.icon-close {
+  color: #acacac;
+}
+.icon-close:hover {
+  color: red;
+}
 th {
   font-weight: 100 !important;
   text-transform: uppercase;
