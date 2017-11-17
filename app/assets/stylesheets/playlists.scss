@@ -445,7 +445,7 @@ button.downvote.btn.darken-2 {
 
 .buttons {
     position: absolute;
-    right: 7%;
+    right: 2%;
     bottom: 11%;
 }
 
@@ -917,12 +917,12 @@ li.guest{
     -webkit-tap-highlight-color: transparent;
 }
 .delete_song_btn{
-  color:#f35058;
-  border: 1px solid #f35058;
+  color:rgb(174, 174, 174);
+  // border: 1px solid #f35058;
   text-transform: none;
   font-size:1.5rem;
   margin-left:5rem;
-      padding: 0.1rem 2rem;
+  padding: 0.1rem 2rem;
 }
 .upvote.voted{
   color:#2498fa;
