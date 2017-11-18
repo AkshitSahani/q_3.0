@@ -10,7 +10,7 @@
   <div>
   <div class="playlist-details">
     <div class="playlist-details-title">
-  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div><br>
+  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
   <div class="playlist-host">&nbsp Hosted By: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div><br>
   <div class="playlist-code center-align">&nbsp Invite Code:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
   </div>

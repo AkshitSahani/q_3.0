@@ -259,9 +259,10 @@ input#search {
     display: block;
     padding-left: 1.6rem;
     margin: 0.25rem;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 400;
     margin-bottom: 15px;
+    line-height:40px;
 }
 
 .playlist-more {
@@ -1070,24 +1071,24 @@ li.guest{
     font-size:2rem;
     margin-left:25px;
   }
-  .playlist-details-title{
-    text-align: left;
-    line-height: 3px;
-    margin-left: 33%;
-  }
+  // .playlist-details-title{
+  //   text-align: left;
+  //   line-height: 3px;
+  //   margin-left: 33%;
+  // }
   .playlist-host{
       padding-left: 0;
     }
-  .playlist-code {
-    display: inline-block;
-    position:relative;
-    border: none;
-    text-align: center;
-    transform:none;
-    left:0;
-    margin-left: 30%;
-    margin-bottom: 5%;
-  }
+  // .playlist-code {
+  //   display: inline-block;
+  //   position:relative;
+  //   border: none;
+  //   text-align: center;
+  //   transform:none;
+  //   left:0;
+  //   margin-left: 30%;
+  //   margin-bottom: 5%;
+  // }
 .make_public_wrapper{
   float:none;
   display: inline-block !important;
@@ -1263,16 +1264,16 @@ li.guest{
 
 @media screen and (min-width: 480px) and (max-width: 800px){
   .playlist-code{
-    border: 1px solid #e1dde8;
-    border-radius: 39px;
-    font-size: 13px;
-    padding: 10px;
-    display: inline-block;
-    margin: auto auto;
-    color: #444444;
-    position: absolute;
-    left: 32%;
-    transform: translateX(-50%);
+    // border: 1px solid #e1dde8;
+    // border-radius: 39px;
+    // font-size: 13px;
+    // padding: 10px;
+    // display: inline-block;
+    // margin: auto auto;
+    // color: #444444;
+    // position: absolute;
+    // left: 32%;
+    // transform: translateX(-50%);
   }
 
   .guestlist-playlist {
