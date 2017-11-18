@@ -132,4 +132,8 @@ if(regExp.exec(window.location.pathname) != null) {
     $('.icon-close').html("more_vert").addClass('icon-more');
   }
 
+  $('.icon-more-horiz').on('click', function() {
+    // $('.playlist-extras').css('display', 'block');
+  })
+
 });

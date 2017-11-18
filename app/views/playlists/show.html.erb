@@ -14,13 +14,22 @@
   <div class="playlist-host">&nbsp Hosted By: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div><br>
   <div class="playlist-code center-align">&nbsp Invite Code:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
   </div>
+  <div class="playlist-more"><i class="material-icons icon-more-horiz dropdown-button" data-activates='dropdown1' data-beloworigin="true" data-constrainWidth="false" data-inDuration="0" data-outDuration="0">more_horiz</i></div>
   <% if @access == "Host" %>
-
-  <span class="guestlist-playlist"><a class="guestlist_button" href='#modal1'>Guest List</a></span>
-  <span class="make_public_wrapper valign-wrapper">All Access<a id="make-public" class="toggle_button <%= if @playlist_q.public; 'active' end%>">
-    <i class="fa fa-check"></i>
-  </a></span>
+  <div class="playlist-extras" style="display: none">
+    <span class="guestlist-playlist"><a class="guestlist_button" href='#modal1'>See Guest List</a></span>
+    <span class="make_public_wrapper">All Access<a id="make-public" class="toggle_button <%= if @playlist_q.public; 'active' end%>">
+      <i class="fa fa-check"></i>
+    </a></span>
+  </div>
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content playlist-more-menu'>
+  <li><a class="guestlist_button" href='#modal1'>See Guest List</a></li>
+  <li><a <%= if @playlist_q.public; 'active' end%>">Make Public</a></li>
+</ul>
 </div>
+
+
  <% end %>
 
   </div>
