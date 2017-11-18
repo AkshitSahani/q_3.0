@@ -260,7 +260,6 @@ input#search {
     padding-left: 1.6rem;
     margin: 0.25rem;
     font-size: 2.5rem;
-    font-weight: 700;
     margin-bottom: 15px;
 }
 
@@ -274,19 +273,20 @@ input#search {
   text-align: center;
   font-family: "Roboto";
   margin-bottom: 1rem;
-
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 .playlist-code {
-  border:1px solid #e1dde8;
-  border-radius:39px;
-  font-size:13px;
-  padding: 10px;
-  display: inline-block;
-  margin:auto auto;
-  color: $main_text;
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
+  // border:1px solid #e1dde8;
+  // border-radius:39px;
+  // font-size:13px;
+  // padding: 10px;
+  // display: inline-block;
+  // margin:auto auto;
+  // color: $main_text;
+  // position:absolute;
+  // left:50%;
+  // transform:translateX(-50%);
 
 }
 
