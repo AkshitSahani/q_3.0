@@ -121,7 +121,7 @@
       <% if (@access == "Host") %> <!-- if the user is host -->
         <% if @playlist_q.public %>
 
-            <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn  delete-song"><i class="material-icons icon-close">close</i></a></span> &nbsp
+            <span class=" buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a></span> &nbsp
 
         <%else %>
           <% if song.status == "que" %>
@@ -130,16 +130,16 @@
               <% if @vote_now == "up" %>
 
 
-                <span class="buttons"><button type="button" name="button" class="upvote voted thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="material-icons icon-close">close</i></a></span> &nbsp
+                <span class="buttons"><button type="button" name="button" class="upvote voted thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a></span> &nbsp
 
               <% elsif @vote_now == "down" %>
 
-                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote voted thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="material-icons icon-close">close</i></a></span> &nbsp
+                <span class="buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote voted thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a></span> &nbsp
 
               <% end %>
             <% else %>
 
-                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="material-icons icon-close">close</i></a></span> &nbsp
+                <span class="buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a></span> &nbsp
 
             <% end %>
 
@@ -149,7 +149,7 @@
 
           <% else %> <!-- if song is played -->
 
-             <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="material-icons icon-close">close</i></a></span> &nbsp
+             <span class="buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span><a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a></span> &nbsp
 
           <% end %> <!-- end of if the playlist is public/private -->
         <% end %>  <!-- end of if the user is Host -->
@@ -160,21 +160,21 @@
             <% @vote_now = Vote.find_by(suggestedsong_id: song.id, user_id: session[:active_id]).status %>
               <% if @vote_now == "up" %>
 
-                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+                <span class="buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
 
               <% elsif @vote_now == "down" %>
 
-                  <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+                  <span class="buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
 
               <% end %>
             <% else %>
 
 
-                <span class="buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class="downvote  thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
+                <span class="buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Down" name="button" class="downvote thumb_btn tooltipped"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
 
                 <% if (TempUser.find(song.user_id).id == session[:active_id]) || @access == "Host" %>
 
-                      <a class="thumb_btn delete_song_btn delete-song-show delete-song"><i class="material-icons icon-close">close</i></a>
+                      <a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a>
                 <% end %>&nbsp
               </span>
             <% end %>
@@ -184,7 +184,7 @@
 
           <% else %> <!-- if song is played -->
 
-              <span class=" buttons"><button type="button" name="button" class="upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+              <span class=" buttons"><button type="button" data-position="bottom" data-delay="10" data-tooltip="Vote Up" name="button" class="upvote thumb_btn tooltipped"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
 
           <% end %>
         <% else %> <!-- if playlist is public -->

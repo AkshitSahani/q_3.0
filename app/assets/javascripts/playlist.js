@@ -126,4 +126,10 @@ if(regExp.exec(window.location.pathname) != null) {
       }
   }
 
+  if ($(window).width() < 600) {
+    var closeIcon = $('.icon-close');
+    console.log('hello');
+    $('.icon-close').html("more_vert").addClass('icon-more');
+  }
+
 });
