@@ -14,24 +14,6 @@
 
   <body class="main-body">
 
-  <div class="wrapper">
-
-
-    <nav class='nav_bar'>
-        <%= link_to root_path do %>
-          <%= image_tag("Q.png") %>
-        <% end %>
-      <p class="user_info right">
-        <% if current_user && session[:user_type] != "temp" %>
-          <%= link_to current_user.first_name.upcase! , user_path(session[:user_id]) %> <span class="delete_user_id hidden"><%= session[:user_id] %></span>
-          <%= link_to "LOG OUT", session_path(session[:user_id]), method: :delete %>
-        <% else %>
-          <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
-          <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
-        <% end %>
-      </p>
-    </nav>
-
     <!-- error messages for any flash notices or alerts anywhere -->
       <!-- ERROR MESSAGES IN ERROR.md -->
       <div class="container">
@@ -42,7 +24,6 @@
     <footer>
       <p class="footer">© 2017 Q , Justin C. Stephen H. Richard S. Akshit S. Theresa S.</p>
     </footer>
-  </div>
   </body>
 
 </html>

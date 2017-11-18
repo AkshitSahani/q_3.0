@@ -1,5 +1,5 @@
 $(document).on("ready", function(){
-  
+
   $('.owl-carousel').owlCarousel({
       loop:true,
       nav:false,
@@ -17,7 +17,10 @@ $(document).on("ready", function(){
   })
 
 
-  $(".button-collapse").sideNav();
+$(".button-collapse").sideNav({
+    edge: 'right'
+  }
+);
   $('ul.tabs').tabs();
   if ($('.song-list').html()) {
     if ($('.song-list').html().trim() === '') {

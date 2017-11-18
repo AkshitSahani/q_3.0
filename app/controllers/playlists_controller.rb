@@ -117,10 +117,14 @@ class PlaylistsController < ApplicationController
   end
 
   def new
-    set_themes
-    set_song_limit
-    @playlist_q = Playlist.new
-    render :layout => "create_playlist"
+    if !session[:user_id]
+      redirect_to new_user_path
+    else
+      set_themes
+      set_song_limit
+      @playlist_q = Playlist.new
+      render :layout => "create_playlist"
+    end
   end
 
   def destroy

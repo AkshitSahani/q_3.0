@@ -13,35 +13,45 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="homepage">
+  <section class="main-body">
+
     <nav>
       <div class="nav-wrapper">
         <div class="container">
-          <%=link_to image_tag('logoWhite.png', class: "responsive-img"), root_path, class: "brand-logo wow swing" %>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-
+          <%=link_to image_tag('Q.png', class: "responsive-img"), root_path, class: "brand-logo wow swing" %>
+          <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons" id="hamburger">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <% if current_user && session[:user_type] != "temp" %>
-              <li><%= link_to current_user.first_name.upcase! , user_path(session[:user_id]) %></li><span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
-              <li><%= link_to "LOG OUT", session_path(session[:user_id]), method: :delete %></li>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
             <% else %>
-              <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
-              <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
             <% end %>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
-            <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
+            <% if current_user && session[:user_type] != "temp" %>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
+            <% else %>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
+            <% end %>
           </ul>
-          <a class="mobile icon1" href="#"><i class="material-icons">search</i></a>
-          <a class="mobile icon2" href="#"><i class="material-icons">person</i></a>
         </div>
       </div>
     </nav>
+
+</section>
+<body class="homepage">
+
     <header class="header-section" id="header">
       <div class="container">
-          <h1 class="center-align">LET'S START A PARTY</h1>
-          <p class="center-align">CREATE OR JOIN A PLAYLIST NOW</p>
+          <h1 class="center-align hp-header">LET'S START A PARTY</h1>
+          <div class="center-align">
+              <%= link_to 'CREATE A PLAYLIST', new_playlist_path, id: 'hp-btn', class: 'waves-effect waves-light btn-large transparent' %>
+              <%= link_to 'JOIN A PLAYLIST', join_path, id: 'hp-btn', class: 'waves-effect waves-light btn-large transparent'%>
+          </div>
           <a class="radioAngle waves-effect" href="#whatIsQ"><i class="material-icons">keyboard_arrow_down</i></a>
       </div>
     </header>

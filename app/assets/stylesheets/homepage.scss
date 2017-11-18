@@ -1,0 +1,13 @@
+#hp-btn {
+  width: 230px;
+  border: 1px solid rgb(255, 255, 255);
+  @media (max-width: 414px){
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 5px;
+  }
+}
+
+.hp-header {
+  margin-bottom: 30px;
+}
