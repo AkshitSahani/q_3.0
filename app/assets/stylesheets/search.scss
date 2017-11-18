@@ -51,11 +51,17 @@ input:-ms-input-placeholder {
   z-index: 10;
   font-size: .8em;
   font-weight: 500;
-  background: linear-gradient(to right, #f1469c, #cc2cb4);
+  background: #f1469c;
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   overflow: hidden;
+  transition: 0.2s ease-out;
+}
+
+#btn-search:hover {
+  background: #ff62b1;
+  transition: 0.2s ease-out;
 }
 
 .back-container{
