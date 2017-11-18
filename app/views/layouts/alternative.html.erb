@@ -19,25 +19,19 @@
         <div class="container">
           <%=link_to image_tag('logoWhite.png', class: "responsive-img"), root_path, class: "brand-logo wow swing" %>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-          <!-- <ul class="hide-on-med-and-down search-form">
-            <li class="search">
-              <label for="search" class="textLabel left">SEARCH FOR PLAYLISTS</label>
-              <form>
-                <div class="input-field">
-                  <input id="search" type="search" required>
-                  <button type="submit" class="label-icon"><i class="material-icons">search</i></button>
-                  <i class="material-icons close">close</i>
-                </div>
-              </form>
-            </li>
-          </ul> -->
+
           <ul class="right hide-on-med-and-down">
-            <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
-            <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
+            <% if current_user && session[:user_type] != "temp" %>
+              <li><%= link_to current_user.first_name.upcase! , user_path(session[:user_id]) %></li><span class="delete_user_id hidden"><%= session[:user_id] %></span></span>
+              <li><%= link_to "LOG OUT", session_path(session[:user_id]), method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
+              <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
+            <% end %>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">SIGN UP</a></li>
+            <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
+            <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
           </ul>
           <a class="mobile icon1" href="#"><i class="material-icons">search</i></a>
           <a class="mobile icon2" href="#"><i class="material-icons">person</i></a>

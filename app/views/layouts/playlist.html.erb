@@ -30,7 +30,7 @@
         <% if current_user && session[:user_type] != "temp" %>
           <%= link_to image_tag("avatar.png", :class=>"user_image circle responsive-img"), user_path(session[:user_id]), {:class=>"user_info_left"} %><span class="delete_user_id hidden"><%= session[:user_id] %></span>
          <div class="user_info_right">
-            <%= link_to current_user.first_name,  user_path(session[:user_id]), {:class=>"user_info_username"} %>
+            <%= link_to current_user.first_name.upcase!,  user_path(session[:user_id]), {:class=>"user_info_username"} %>
             <a class="user_edit" href="#">Edit</a>
           </div>
           <a class="dropdown-button user_info_dropdown" href="#!" data-activates="user_dropdown"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
@@ -48,7 +48,8 @@
           <li>  <%= link_to "Logout", session_path(session[:user_id]), method: :delete %></li>
         </ul>
         <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+          <li><%= link_to 'SIGN IN', new_session_path, class: 'waves-effect waves-light' %></li>
+          <li><%= link_to 'SIGN UP', new_user_path, class: 'waves-effect waves-light'%></li>
         <% end %>
       </div>
     </nav>
