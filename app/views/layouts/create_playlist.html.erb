@@ -14,6 +14,34 @@
 
   <body class="main-body">
 
+    <nav>
+      <div class="nav-wrapper">
+        <div class="container">
+          <%=link_to image_tag('Q.png', class: "responsive-img"), root_path, class: "brand-logo wow swing" %>
+          <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons" id="hamburger">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <% if current_user && session[:user_type] != "temp" %>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
+            <% else %>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
+            <% end %>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <% if current_user && session[:user_type] != "temp" %>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
+            <% else %>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
   <div class="wrapper-create-playlist">
 
     <!-- error messages for any flash notices or alerts anywhere -->

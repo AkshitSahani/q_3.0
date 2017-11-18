@@ -16,8 +16,35 @@
   <body class="main-body" id="target1">
 
 
+    <nav>
+      <div class="nav-wrapper">
+        <div class="container">
+          <%=link_to image_tag('Q.png', class: "responsive-img"), root_path, class: "brand-logo wow swing" %>
+          <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons" id="hamburger">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <% if current_user && session[:user_type] != "temp" %>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
+            <% else %>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
+            <% end %>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <% if current_user && session[:user_type] != "temp" %>
+            <li><%= link_to current_user.first_name, user_path(session[:user_id]), class: 'purple-text username' %><span class="delete_user_id hidden"><%= session[:user_id] %></span></li>
+            <li><%=  link_to "LOG OUT", session_path(session[:user_id]), method: :delete, class: 'purple-text' %></li>
+            <% else %>
+            <li><%= link_to "LOG IN", new_session_path, class: 'purple-text' %></li>
+            <li><%= link_to "SIGN UP", new_user_path, class: 'purple-text' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <nav class='nav_bar'>
+
+    <!-- <nav class='nav_bar'>
         <div class="user_menu_mob">
           <a class="user_mob_menu">
             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -41,7 +68,7 @@
           </a>
         </div>
          <!-- Dropdown Structure -->
-        <ul id="user_dropdown" class="dropdown-content">
+        <!-- <ul id="user_dropdown" class="dropdown-content">
           <li><a href="#!">Profile</a></li>
           <li><a href="#!">Playlists</a></li>
           <li><a href="#!">Parties</a></li>
@@ -50,8 +77,8 @@
         <% else %>
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
         <% end %>
-      </div>
-    </nav>
+      </div> -->
+    <!-- </nav> --> -->
 
     <!-- error messages for any flash notices or alerts anywhere -->
         <% if flash.now[:alert] && flash.now[:alert].class == Array %>
