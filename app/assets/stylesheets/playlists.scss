@@ -246,7 +246,7 @@ input#search {
   min-height: 12rem;
   line-height: 1rem;
   width: 99.9%;
-  padding-top:25px;
+  padding-top:30px;
 }
 .playlist-name {
   color: $main_text;
@@ -274,10 +274,10 @@ input#search {
   transition: 0.2s ease-out;
 }
 
-.icon-more-horiz:hover {
-  color: #f1469c !important;
-  transition: 0.2s ease-out;
-}
+// .icon-more-horiz:hover {
+//   color: #f1469c !important;
+//   transition: 0.2s ease-out;
+// }
 
 .playlist-more-menu {
   font-family: "Roboto" !important;
