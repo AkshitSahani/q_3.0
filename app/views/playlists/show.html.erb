@@ -28,9 +28,13 @@
   <li><a <%= if @playlist_q.public; 'active' end%>">Make Public</a></li>
 </ul>
 </div>
-
-
- <% end %>
+ <% elsif @access == "Guest" %>
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content playlist-more-menu'>
+ <li><a class="playlist_create_button" href="/playlists/new">Create Playlist</a></li>
+</ul>
+</div>
+<% end %>
 
   </div>
 
