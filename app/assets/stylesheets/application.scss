@@ -179,7 +179,7 @@ textarea.materialize-textarea {
 }
 
 /* Text inputs */
-input:not([type]):hover,
+  input:not([type]):hover,
 input[type=text]:hover,
 input[type=password]:hover,
 input[type=email]:hover,
@@ -227,10 +227,10 @@ button:focus{
 
 // homepage scss
 
-*{
-  // color: $blue;
-  font-family: "Montserrat-Regular";
-}
+// *{
+//   // color: $blue;
+//   font-family: "Montserrat-Regular";
+// }
 .container, .card{
   border: none;
   box-shadow: none;

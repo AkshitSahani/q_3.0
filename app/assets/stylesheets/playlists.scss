@@ -243,10 +243,10 @@ input#search {
 
 .playlist-details {
   background-color: white;
-  height: 6rem;
+  min-height: 12rem;
   line-height: 1rem;
   width: 99.9%;
-  padding-top:25px;
+  padding-top:30px;
 }
 .playlist-name {
   color: $main_text;
@@ -259,13 +259,41 @@ input#search {
     display: block;
     padding-left: 1.6rem;
     margin: 0.25rem;
-    font-size: 1.3rem;
+    font-size: 2.2rem;
+    font-weight: 400;
     margin-bottom: 15px;
+    line-height:40px;
 }
-.playlist-host{
-  padding-left:1.6rem;
-  display:block;
+
+.playlist-more {
+  text-align: center;
 }
+
+.icon-more-horiz {
+  cursor: pointer;
+  color: #444444 !important;
+  transition: 0.2s ease-out;
+}
+
+// .icon-more-horiz:hover {
+//   color: #f1469c !important;
+//   transition: 0.2s ease-out;
+// }
+
+.playlist-more-menu {
+  font-family: "Roboto" !important;
+}
+
+.playlist-more-menu li > a {
+  color: #444444 !important;
+  font-size: 14px !important;
+  padding: 14px 22px !important;
+}
+
+.playlist-more ul {
+  border-radius: 5px;
+}
+
 .playlist-description {
   color: white;
   // width: 33%;
@@ -273,20 +301,28 @@ input#search {
   display: inline-block;
 }
 .playlist-details-title{
-  display:inline-block;
-
+  text-align: center;
+  font-family: "Roboto";
+  margin-bottom: 1rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+.playlist-extras {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .playlist-code {
-  border:1px solid #e1dde8;
-  border-radius:39px;
-  font-size:13px;
-  padding: 10px;
-  display: inline-block;
-  margin:auto auto;
-  color: $main_text;
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
+  // border:1px solid #e1dde8;
+  // border-radius:39px;
+  // font-size:13px;
+  // padding: 10px;
+  // display: inline-block;
+  // margin:auto auto;
+  // color: $main_text;
+  // position:absolute;
+  // left:50%;
+  // transform:translateX(-50%);
 
 }
 
@@ -444,7 +480,7 @@ button.downvote.btn.darken-2 {
 
 .buttons {
     position: absolute;
-    right: 7%;
+    right: 2%;
     bottom: 11%;
 }
 
@@ -612,7 +648,7 @@ button.downvote.btn.darken-2 {
     left: 5% !important;
   }
  .search-container {
-   width: 84.95%;
+   width: 100%;
  }
 
  .viewable-screen-front {
@@ -830,7 +866,7 @@ html{
 }
 
 .guestlist-playlist {
-  float: right;
+  // float: right;
   opacity: 0.85;
   margin: 0.25rem;
 }
@@ -880,11 +916,12 @@ li.guest{
   line-height: 2.75rem;
 }
  .make_public_wrapper{
-    float: right;
+    // float: right;
+  display: inline-block;
   opacity: 0.85;
   text-transform: capitalize;
-  margin: 0.25rem;
-  margin-right: 0;
+  // margin: 0.25rem;
+  // margin-right: 0;
   }
 .container{
   border-left:1px solid #e1dde8;
@@ -916,12 +953,12 @@ li.guest{
     -webkit-tap-highlight-color: transparent;
 }
 .delete_song_btn{
-  color:#f35058;
-  border: 1px solid #f35058;
+  color:rgb(174, 174, 174);
+  // border: 1px solid #f35058;
   text-transform: none;
   font-size:1.5rem;
   margin-left:5rem;
-      padding: 0.1rem 2rem;
+  padding: 0.1rem 2rem;
 }
 .upvote.voted{
   color:#2498fa;
@@ -942,7 +979,7 @@ li.guest{
      margin-left:0.5rem;
 }
 .toggle_button>i.fa-check{
-  display:none;
+  color: #e9e9f2;
 }
 .toggle_button.active{
   background: linear-gradient(to right, #f84696, #c51fa2);
@@ -1033,24 +1070,24 @@ li.guest{
     font-size:2rem;
     margin-left:25px;
   }
-  .playlist-details-title{
-    text-align: left;
-    line-height: 3px;
-    margin-left: 33%;
-  }
+  // .playlist-details-title{
+  //   text-align: left;
+  //   line-height: 3px;
+  //   margin-left: 33%;
+  // }
   .playlist-host{
       padding-left: 0;
     }
-  .playlist-code {
-    display: inline-block;
-    position:relative;
-    border: none;
-    text-align: center;
-    transform:none;
-    left:0;
-    margin-left: 30%;
-    margin-bottom: 5%;
-  }
+  // .playlist-code {
+  //   display: inline-block;
+  //   position:relative;
+  //   border: none;
+  //   text-align: center;
+  //   transform:none;
+  //   left:0;
+  //   margin-left: 30%;
+  //   margin-bottom: 5%;
+  // }
 .make_public_wrapper{
   float:none;
   display: inline-block !important;
@@ -1121,7 +1158,11 @@ li.guest{
 
   .playlist-name {
     padding-left: 0;
+    font-size: 1.8rem;
+  }
 
+  .playlist-details-title {
+    font-size: 1.1rem;
   }
 
   //  Deezer Player
@@ -1226,16 +1267,16 @@ li.guest{
 
 @media screen and (min-width: 480px) and (max-width: 800px){
   .playlist-code{
-    border: 1px solid #e1dde8;
-    border-radius: 39px;
-    font-size: 13px;
-    padding: 10px;
-    display: inline-block;
-    margin: auto auto;
-    color: #444444;
-    position: absolute;
-    left: 32%;
-    transform: translateX(-50%);
+    // border: 1px solid #e1dde8;
+    // border-radius: 39px;
+    // font-size: 13px;
+    // padding: 10px;
+    // display: inline-block;
+    // margin: auto auto;
+    // color: #444444;
+    // position: absolute;
+    // left: 32%;
+    // transform: translateX(-50%);
   }
 
   .guestlist-playlist {
@@ -1260,7 +1301,7 @@ li.guest{
 
   .delete_song_btn{
     color: #f35058;
-    border: 1px solid #f35058;
+    // border: 1px solid #f35058;
     text-transform: none;
     font-size: 1.5rem;
     margin-left: 3rem;

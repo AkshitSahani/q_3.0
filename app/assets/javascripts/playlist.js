@@ -119,11 +119,21 @@ if(regExp.exec(window.location.pathname) != null) {
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
           document.getElementById("myBtn").style.display = "block";
       } else {
           document.getElementById("myBtn").style.display = "none";
       }
   }
+
+  if ($(window).width() < 600) {
+    var closeIcon = $('.icon-close');
+    console.log('hello');
+    $('.icon-close').html("more_vert").addClass('icon-more');
+  }
+
+  $('.icon-more-horiz').on('click', function() {
+    // $('.playlist-extras').css('display', 'block');
+  })
 
 });
