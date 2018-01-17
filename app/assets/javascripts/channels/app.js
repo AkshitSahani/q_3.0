@@ -19,7 +19,7 @@ $('document').ready(function(){
 
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
-         
+
           $('#make-public').toggleClass('active');
           $('.que').find('.buttons').addClass('hidden');
           if (userId != data[2])  { //if guest or viewer
@@ -32,7 +32,7 @@ $('document').ready(function(){
         }
         else if (data[0].public === false) { //private
           console.log('we are going private');
-         
+
           $('#make-public').toggleClass('active');
           $('.add-search-container').removeClass('hidden');
         }
@@ -106,7 +106,7 @@ $('document').ready(function(){
             // var iconDown = $('<i>').attr('class','material-icons').html('thumb_down');
             // var downButton = $(buttonDown).append(iconDown);
           }
-           
+
 
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
@@ -119,7 +119,7 @@ $('document').ready(function(){
 
                 }
                 else {
-                  $(buttonDown).addClass('voted');
+                  $(buttonDown).addClass('voted');;
 
                 }
                 }
@@ -151,7 +151,7 @@ $('document').ready(function(){
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
-        
+
           //
           // if (data[4].public == false) {
           //   console.log('did we get here?');
