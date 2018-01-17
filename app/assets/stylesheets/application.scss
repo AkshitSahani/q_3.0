@@ -19,6 +19,9 @@
 
  @import "materialize";
 
+/* color variables */
+$blueDeep: #0a0f2c;
+
  *,
  *:before,
  *:after {
@@ -857,7 +860,8 @@ nav {
   }
   .footer{
     margin-bottom: 0;
-    // background: $blueDeep;
+     background: $blueDeep;
+
     .container{
       min-height: 100px;
     }
