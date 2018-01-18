@@ -11,3 +11,8 @@
 .hp-header {
   margin-bottom: 30px;
 }
+
+/* Fix of diferent block size */
+.card.waves-effect.waves {
+    width: 100%;
+}
