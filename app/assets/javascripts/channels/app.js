@@ -1,5 +1,5 @@
 $('document').ready(function(){
-
+  
   App.app = App.cable.subscriptions.create('AppChannel', {
 
     connected: function(){
@@ -19,7 +19,7 @@ $('document').ready(function(){
 
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
-         
+
           $('#make-public').toggleClass('active');
           $('.que').find('.buttons').addClass('hidden');
           if (userId != data[2])  { //if guest or viewer
@@ -32,7 +32,7 @@ $('document').ready(function(){
         }
         else if (data[0].public === false) { //private
           console.log('we are going private');
-         
+
           $('#make-public').toggleClass('active');
           $('.add-search-container').removeClass('hidden');
         }
@@ -106,7 +106,7 @@ $('document').ready(function(){
             // var iconDown = $('<i>').attr('class','material-icons').html('thumb_down');
             // var downButton = $(buttonDown).append(iconDown);
           }
-           
+
 
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
@@ -144,14 +144,24 @@ $('document').ready(function(){
         var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
+        var str_id = String(userId)
+        var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
         votes.append(heart);
+
+        if (true_user_id == song.user_id || true_user_id == data[2]) { // if user created this playlist or add song
+          console.log("ALARAM");
+          votes.append('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>');
+        }
         $(div_replace).append(votes);
         //if (song.playlist_id > 4) {
+
+//my lab
+console.log(data, true_user_id);
 
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
-        
+
           //
           // if (data[4].public == false) {
           //   console.log('did we get here?');
