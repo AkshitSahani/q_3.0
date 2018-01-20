@@ -1,5 +1,5 @@
 $('document').ready(function(){
-  
+
   App.app = App.cable.subscriptions.create('AppChannel', {
 
     connected: function(){
@@ -154,9 +154,6 @@ $('document').ready(function(){
         }
         $(div_replace).append(votes);
         //if (song.playlist_id > 4) {
-
-//my lab
-console.log(data, true_user_id);
 
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
