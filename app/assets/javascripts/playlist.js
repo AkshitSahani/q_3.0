@@ -101,18 +101,17 @@ if(regExp.exec(window.location.pathname) != null) {
   });
 
   //Back to top button
-
   $('a[href^="#"]').on('click',function (e) {
     e.preventDefault();
 
-    var target = this.hash;
-    var $target = $(target);
-
-    $('html, body').stop().animate({
-        'scrollTop': $(target).offset().top
-    }, 900, 'swing', function() {
-        window.location.hash = target;
-    });
+    // var target = this.hash;
+    // var $target = $(target);
+    //
+    // $('html, body').stop().animate({
+    //     'scrollTop': $(target).offset().top
+    // }, 900, 'swing', function() {
+    //     window.location.hash = target;
+    // });
   });
 
   // When the user scrolls down 20px from the top of the document, show the button
