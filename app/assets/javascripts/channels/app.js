@@ -16,7 +16,7 @@ $('document').ready(function(){
       if(regExp.exec(window.location.pathname) != null) {
         var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
       }
-
+      console.log(data);
       if (data[0].id === playlist_id) {
         if (data[0].public) {  //public
 
@@ -147,9 +147,9 @@ $('document').ready(function(){
         var str_id = String(userId)
         var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
         votes.append(heart);
-
-        if (true_user_id == song.user_id || true_user_id == data[2]) { // if user created this playlist or add song
-          console.log("ALARAM");
+        tempuserid = (data[5]) ? (data[5].id) : ("");
+        console.log(data);
+        if ( true_user_id == song.user_id || song.user_id == tempuserid ) { // if user created this playlist or add song
           votes.append('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>');
         }
         $(div_replace).append(votes);

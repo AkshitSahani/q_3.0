@@ -40,7 +40,7 @@
 
 <div id="d_player"></div>
 <div id="dz-root"></div>
-
+<%=  %>
 
   <script type="text/javascript">
   <%= render :partial => "dz.js" %>
@@ -200,8 +200,11 @@
 
           <% end %>
         <% else %> <!-- if playlist is public -->
-
-            <span class=" buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span></span> &nbsp
+            <span class=" buttons"><button type="button" name="button" class=" upvote thumb_btn"><i class="material-icons">thumb_up</i></button>&nbsp<button type="button" name="button" class=" downvote thumb_btn"><i class="material-icons">thumb_down</i></button><span class="heart thumb_btn"><i class="fa fa-heart"></i> &nbsp<span class="netvote" id=<%=song.id%>><%= song.net_vote %></span></span>
+            <% if ((song.user_id && session[:active_id]) ? TempUser.find(song.user_id).id == TempUser.find(session[:active_id]).id : false) || session[:user_id] == song.user_id || @host.id == session[:user_id] %>
+              <a class="thumb_btn delete_song_btn tooltipped delete-song" data-position="bottom" data-delay="10" data-tooltip="Remove Song" name="button" ><i class="material-icons icon-close">close</i></a>
+            <% end %>
+          </span> &nbsp
 
         <% end %>
       <% else %> <!-- if the user is Viewer -->

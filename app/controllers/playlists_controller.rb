@@ -41,7 +41,7 @@ class PlaylistsController < ApplicationController
     @next_song_record = SuggestedSong.next_song_record(params[:id])
     respond_to do |format|
       format.json do render json: {song_id: @next_song_id, song_record: @next_song_record} end
-      end
+    end
   end
 
 
