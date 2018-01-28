@@ -36,6 +36,7 @@ gem 'httparty'
 gem 'bcrypt'
 gem 'figaro'
 gem 'faker'
+gem 'gon'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

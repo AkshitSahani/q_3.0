@@ -33,6 +33,14 @@ class PlaylistsController < ApplicationController
 
     @unplayedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played").order(status: :desc, net_vote: :desc)
     @playedsongs = SuggestedSong.where(playlist_id: @playlist_q.id, status: "played")
+
+    # Local variables for gon
+    songs =  SuggestedSong.playlist_songs(params[:id])
+    votes = Vote.get_votes(params[:id])
+    host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
+    playlist = Playlist.find(params[:id])
+    # Make them usable for javascript
+    gon.data_for_request = [songs, '', host_id, votes, playlist]
     render :layout => 'playlist'
   end
 
