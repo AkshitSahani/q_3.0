@@ -173,8 +173,8 @@ $('document').ready(function(){
       }
       }
     })
-    setTimeout( function(){
+    $(".song-list").ready(function() {
       App.app.received(gon.data_for_request);
-    }, 200 );
+    });
   }
 )
