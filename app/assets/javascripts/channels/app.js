@@ -68,11 +68,15 @@ $('document').ready(function(){
 
         $('.song-list').html('');
 
-        data[0].forEach(function(song) {
+        $(data[0]).each(function(index, song) {
+          var special_song_status = false
+          if (index == 0) {special_song_status = true}
           if (song.status === "played") {
+            special_song_status = true
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-check" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           }
           else if (song.status === "playing") {
+            special_song_status = true
             var divContainer = $('<div>').attr('class', 'song-in-queue playing').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-volume-down" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           } else if (song.status === "que") {
             // First 4 star playlist apply pulic-que
@@ -134,7 +138,7 @@ $('document').ready(function(){
         var spanHeart = $('<span>').attr('class','heart');
         var iconHeart = $('<i>').attr('class','fa fa-heart');
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
-
+        var deleteBtnCode = $('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>')
         var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
         console.log(span);
@@ -149,12 +153,20 @@ $('document').ready(function(){
         votes.append(heart);
         tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
-        if ( true_user_id == song.user_id || song.user_id == tempuserid ) { // if user created this playlist or add song
-          votes.append('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>');
+        if ( (true_user_id == song.user_id || data[2] == true_user_id || song.user_id == tempuserid) && special_song_status == false ) { // if user created this playlist or add song
+          deleteBtnCode = deleteBtnCode;
+          votes.append(deleteBtnCode);
+        } else {
+          deleteBtnCode = $(deleteBtnCode).css("cursor", "default").children().css("visibility", "hidden").parent();
+          votes.append(deleteBtnCode);
         }
         $(div_replace).append(votes);
         //if (song.playlist_id > 4) {
 
+
+        // These piece of code isn't working because:
+        // - Variable "userId" gives false id
+        // - It is under append votes to div. That is make no sense to append code into votes
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
