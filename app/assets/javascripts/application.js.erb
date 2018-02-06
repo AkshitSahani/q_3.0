@@ -500,7 +500,8 @@ function randomPhrase() {
      var row = $('<div>').addClass('row');
      //adding row to .main-content, which is the overall container.
      $('.main-content').append(row);
-
+     // adding delete button
+     $(row).append('<div class="back-container"><a class="more back-to-playlist" href="#">BACK</a></div>')
      //adding albums acc to new designs
      var artistsContainer = $('<div>').addClass('col s6 card__panel');
 
