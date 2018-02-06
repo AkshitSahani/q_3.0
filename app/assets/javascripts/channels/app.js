@@ -12,6 +12,10 @@ $('document').ready(function(){
 
     received: function(data) {
       var userId = parseInt($('.delete_user_id').text());
+      // User id is incorrect, get true user_id
+      var str_id = String(userId)
+      var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
+      // end
       var regExp = /\d+/;
       if(regExp.exec(window.location.pathname) != null) {
         var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
@@ -117,7 +121,7 @@ $('document').ready(function(){
             var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
 
             data[3].forEach(function(vote) {
-              if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
+              if ((vote.suggestedsong_id === song.id) && (vote.user_id === true_user_id)){
                 if (vote.status === "up"){
                   $(buttonUp).addClass('voted');
 
@@ -148,8 +152,6 @@ $('document').ready(function(){
         var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-        var str_id = String(userId)
-        var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
         votes.append(heart);
         tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
