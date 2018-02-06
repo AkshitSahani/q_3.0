@@ -27,7 +27,7 @@ class VotesController < ApplicationController
   @songs =  SuggestedSong.playlist_songs(SuggestedSong.find(params[:suggestedsong_id]).playlist_id)
 
   @votes = Vote.get_votes(params[:playlist_id])
-  ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes, @playlist])
+  ActionCable.server.broadcast(:app, [ @songs, "", @host_id, @votes, @playlist, (session[:active_id] ? TempUser.find(session[:active_id]) : "") ])
 
   end
 
