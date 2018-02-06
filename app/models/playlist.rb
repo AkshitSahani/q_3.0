@@ -5,7 +5,6 @@ class Playlist < ApplicationRecord
   has_many :temp_users, through: :authorizations
 
   validates :name, :presence => true
-  validates :theme, :presence => true
 
   def self.create_access_code
     access_code = rand(999999)
