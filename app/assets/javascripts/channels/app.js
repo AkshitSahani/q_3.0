@@ -73,14 +73,10 @@ $('document').ready(function(){
         $('.song-list').html('');
 
         $(data[0]).each(function(index, song) {
-          var special_song_status = false
-          if (index == 0) {special_song_status = true}
           if (song.status === "played") {
-            special_song_status = true
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-check" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           }
           else if (song.status === "playing") {
-            special_song_status = true
             var divContainer = $('<div>').attr('class', 'song-in-queue playing').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-volume-down" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           } else if (song.status === "que") {
             // First 4 star playlist apply pulic-que
@@ -155,8 +151,7 @@ $('document').ready(function(){
         votes.append(heart);
         tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
-        if ( (true_user_id == song.user_id || data[2] == true_user_id || song.user_id == tempuserid) && special_song_status == false ) { // if user created this playlist or add song
-          deleteBtnCode = deleteBtnCode;
+        if ( (true_user_id == song.user_id || data[2] == true_user_id || song.user_id == tempuserid) ) { // if user created this playlist or add song
           votes.append(deleteBtnCode);
         } else {
           deleteBtnCode = $(deleteBtnCode).css("cursor", "default").children().css("visibility", "hidden").parent();
@@ -188,7 +183,7 @@ $('document').ready(function(){
       }
     })
     $(".song-list").ready(function() {
-      App.app.received(gon.data_for_request);
+      typeof(gon) != "undefined" && App.app.received(gon.data_for_request);
     });
   }
 )
