@@ -103,7 +103,8 @@ input:-ms-input-placeholder {
 }
 .photos {
   margin-top: 20px;
-  display: flex;
+  text-align: center;
+  display: inline-block;
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 10px 0;
