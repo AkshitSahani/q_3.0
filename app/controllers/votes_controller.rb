@@ -8,8 +8,8 @@ class VotesController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     @host_id = Authorization.where(playlist_id: params[:playlist_id], status: "Host")[0].user_id
 
-    @vote = Vote.new(user_id: session[:user_id], suggestedsong_id: params[:suggestedsong_id], status: params[:status])
-    @vote2 = Vote.where(user_id: session[:user_id], suggestedsong_id: params[:suggestedsong_id])
+    @vote = Vote.new(user_id: session[:user_id], temp_user_id: (session[:active_id] if session[:user_type] == "temp"), suggestedsong_id: params[:suggestedsong_id], status: params[:status])
+    @vote2 = Vote.where(user_id: session[:user_id], temp_user_id: (session[:active_id] if session[:user_type] == "temp"), suggestedsong_id: params[:suggestedsong_id])
     if @vote2 != []
       if @vote.user_id == @vote2[0].user_id && @vote.suggestedsong_id == @vote2[0].suggestedsong_id && @vote.status != @vote2[0].status
           @vote2[0].update_attributes(status: @vote.status)

@@ -115,9 +115,10 @@ $('document').ready(function(){
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
             var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
+            var tempuserid = (data[5]) ? (data[5].id) : ("");
 
             data[3].forEach(function(vote) {
-              if ((vote.suggestedsong_id === song.id) && (vote.user_id === true_user_id)){
+              if ((vote.suggestedsong_id === song.id) && (vote.user_id === true_user_id || vote.temp_user_id === tempuserid)){
                 if (vote.status === "up"){
                   $(buttonUp).addClass('voted');
 
@@ -149,7 +150,6 @@ $('document').ready(function(){
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
         votes.append(heart);
-        tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
         if ( (true_user_id == song.user_id || data[2] == true_user_id || song.user_id == tempuserid) ) { // if user created this playlist or add song
           votes.append(deleteBtnCode);
