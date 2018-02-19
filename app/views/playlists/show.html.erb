@@ -10,37 +10,29 @@
   <div>
   <div class="playlist-details">
     <div class="playlist-details-title">
-  <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
-  <div class="playlist-host">&nbsp Hosted By: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div><br>
-  <div class="playlist-code center-align">&nbsp Invite Code:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
-  </div>
-  <div class="playlist-more"><i class="material-icons icon-more-horiz dropdown-button" data-activates='dropdown1' data-beloworigin="true" data-constrainWidth="false" data-inDuration="0" data-outDuration="0">more_horiz</i></div>
+      <div class="playlist-name">&nbsp<%= @playlist_q.name %>&nbsp</div>
+      <div class="playlist-host">&nbsp Hosted By: <span class="playlist-host-username"><%= "#{@host.first_name} #{@host.last_name}" %></span></div><br>
+      <div class="playlist-code center-align">&nbsp Invite Code:<span class="playlist-code-numbers"> <%=@playlist_q.access_code%></span></div> <% if @access == "Host" || @access == "Guest" %>
+    </div>
   <% if @access == "Host" %>
-  <div class="playlist-extras" style="display: none">
-    <span class="guestlist-playlist"><a class="guestlist_button" href='#modal1'>See Guest List</a></span>
-    <span class="make_public_wrapper">All Access<a id="make-public" class="toggle_button <%= if @playlist_q.public; 'active' end%>">
-      <i class="fa fa-check"></i>
-    </a></span>
-  </div>
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content playlist-more-menu'>
-  <li><a class="guestlist_button" href='#modal1'>See Guest List</a></li>
-  <li><a <%= if @playlist_q.public; 'active' end%>">Make Public</a></li>
-</ul>
-</div>
- <% elsif @access == "Guest" %>
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content playlist-more-menu'>
- <li><a class="playlist_create_button" href="/playlists/new">Create Playlist</a></li>
-</ul>
-</div>
-<% end %>
+      <div class="playlist-details-buttons">
+        <span class="guestlist-playlist"><a class="guestlist_button" href='#modal1'>See Guest List</a></span>
+        <span class="make_public_wrapper">All Access<a id="make-public" class="toggle_button <%= if @playlist_q.public; 'active' end%>">
+          <i class="fa fa-check"></i>
+        </a></span>
+      </div>
+    </div>
+   <% elsif @access == "Guest" %>
+      <div class="playlist-details-buttons">
+        <div class="guestlist-playlist"><a class="playlist_create_button" href="/playlists/new">Create Playlist</a></div>
+      </div>
+    </div>
+  <% end %>
 
   </div>
 
 <div id="d_player"></div>
 <div id="dz-root"></div>
-<%=  %>
 
   <script type="text/javascript">
   <%= render :partial => "dz.js" %>
@@ -110,7 +102,7 @@
 
 
 <div class="song-list">
-  
+
 </div>
 
 <div class="guest-list-container modal" id="modal1">

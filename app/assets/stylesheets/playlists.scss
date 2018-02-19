@@ -303,9 +303,26 @@ input#search {
 .playlist-details-title{
   text-align: center;
   font-family: "Roboto";
-  margin-bottom: 1rem;
   font-weight: 300;
   font-size: 1.2rem;
+}
+// For playlist buttons
+.playlist-details-buttons {
+  text-align: center;
+  padding: 10px 30px;
+  margin: 1rem auto 0;
+}
+.playlist-details-buttons {
+  span {float: none;}
+  .guestlist-playlist a {
+    border-radius: 0;
+    color: white;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    padding: 10px 30px;
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 .playlist-extras {
   position: absolute;
@@ -983,6 +1000,7 @@ li.guest{
 }
 .toggle_button.active{
   background: linear-gradient(to right, #f84696, #c51fa2);
+  text-align: left;
 }
 .toggle_button.active>i.fa-check{
   display:initial;
