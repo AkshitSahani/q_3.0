@@ -424,6 +424,11 @@ iframe {
   opacity: 0.65;
 }
 
+.not_active , .not_active:hover, .not_active * {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .upvote:hover, .downvote:hover {
   opacity: 1;
 }

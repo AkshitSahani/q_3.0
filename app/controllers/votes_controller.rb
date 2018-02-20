@@ -10,17 +10,19 @@ class VotesController < ApplicationController
 
     @vote = Vote.new(user_id: session[:user_id], suggestedsong_id: params[:suggestedsong_id], status: params[:status])
     @vote2 = Vote.where(user_id: session[:user_id], suggestedsong_id: params[:suggestedsong_id])
-    if @vote2 != []
-      if @vote.user_id == @vote2[0].user_id && @vote.suggestedsong_id == @vote2[0].suggestedsong_id && @vote.status != @vote2[0].status
-          @vote2[0].update_attributes(status: @vote.status)
-          # render json: {message: "Vote updated!"}
-      elsif @vote.user_id == @vote2[0].user_id && @vote.suggestedsong_id == @vote2[0].suggestedsong_id && @vote.status == @vote2[0].status
-        @vote2.destroy(@vote2)
-        # render json: {message: "Vote deleted!"}
+    if session[:active_id] == @host_id
+      if @vote2 != []
+        if @vote.user_id == @vote2[0].user_id && @vote.suggestedsong_id == @vote2[0].suggestedsong_id && @vote.status != @vote2[0].status
+            @vote2[0].update_attributes(status: @vote.status)
+            # render json: {message: "Vote updated!"}
+        elsif @vote.user_id == @vote2[0].user_id && @vote.suggestedsong_id == @vote2[0].suggestedsong_id && @vote.status == @vote2[0].status
+          @vote2.destroy(@vote2)
+          # render json: {message: "Vote deleted!"}
+        end
+      else
+        @vote.save!
+        # render json: {message: "Vote added!"}
       end
-    else
-      @vote.save!
-      # render json: {message: "Vote added!"}
     end
     net_vote(SuggestedSong.find(params[:suggestedsong_id]).playlist_id)
 

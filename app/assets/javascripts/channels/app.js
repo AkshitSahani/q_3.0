@@ -107,11 +107,16 @@ $('document').ready(function(){
             // var downButton = $(buttonDown).append(iconDown);
           }
 
-
+            var str_id = String(userId)
+            var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) );
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
             var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
 
+            if (data[2] != true_user_id && data[4].public == false) {
+              $(buttonUp).addClass('not_active').removeClass('upvote');
+              $(buttonDown).addClass('not_active').removeClass('downvote');
+            }
             data[3].forEach(function(vote) {
               if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
                 if (vote.status === "up"){
@@ -119,7 +124,7 @@ $('document').ready(function(){
 
                 }
                 else {
-                  $(buttonDown).addClass('voted');;
+                  $(buttonDown).addClass('voted');
 
                 }
                 }
@@ -144,8 +149,6 @@ $('document').ready(function(){
         var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-        var str_id = String(userId)
-        var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
         votes.append(heart);
         tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
