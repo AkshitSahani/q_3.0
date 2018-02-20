@@ -186,7 +186,7 @@ function randomPhrase() {
 
       // Creating row div which contains artists, albums and tracks.
       var row = $('<div>').addClass('row');
-      var backButton = $('<a>').addClass('more back-to-playlist').attr('href', '#').text('BACK');
+      var backButton = $('<a>').addClass('more back-to-playlist').attr('href', '#').text('BACK TO PLAYLIST');
       var backContainer = $('<div>').addClass('back-container');
       $(backContainer).append(backButton);
       //adding row to .main-content, which is the overall container.
@@ -377,7 +377,7 @@ function randomPhrase() {
 
      var artistsHeader = $('<div>').addClass('panel__head');
      var artists = $('<div>').addClass('theme').html('Artists');
-     var backArtists = $('<a>').addClass('more valign-wrapper back-artists').attr('href', '#').text('Back');
+     var backArtists = $('<a>').addClass('more valign-wrapper back-artists').attr('href', '#').text('Back to search results');
      // $(artistsContainer).append(artistsHeader);
      $(artistsHeader).append(artists).append(backArtists);
      var artistResultContainer = $('<div>').addClass('photos');
@@ -418,7 +418,7 @@ function randomPhrase() {
 
      var albumsHeader = $('<div>').addClass('panel__head');
      var albums = $('<div>').addClass('theme').html('Albums');
-     var backAlbums = $('<a>').addClass('more valign-wrapper back-albums').attr('href', '#').text('Back');
+     var backAlbums = $('<a>').addClass('more valign-wrapper back-albums').attr('href', '#').text('Back to search results');
      // $(albumsContainer).append(albumsHeader);
      $(albumsHeader).append(albums).append(backAlbums);
      var albumResultContainer = $('<div>').addClass('photos');
@@ -501,7 +501,7 @@ function randomPhrase() {
      //adding row to .main-content, which is the overall container.
      $('.main-content').append(row);
      // adding "BACK" button
-     $(row).append('<div class="back-container"><a class="more back-to-playlist" href="#">BACK</a></div>')
+     $(row).append('<div class="back-container"><a class="more back-to-playlist" href="#">BACK TO PLAYLIST</a></div>')
      //adding albums acc to new designs
      var artistsContainer = $('<div>').addClass('col s6 card__panel');
 
