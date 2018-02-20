@@ -40,7 +40,7 @@ class PlaylistsController < ApplicationController
     host_id = Authorization.where(playlist_id: params[:id], status: "Host")[0].user_id
     playlist = Playlist.find(params[:id])
     # Make them usable for javascript
-    gon.data_for_request = [songs, '', host_id, votes, playlist]
+    gon.data_for_request = [songs, '', host_id, votes, playlist, (session[:active_id] ? TempUser.find(session[:active_id]) : "")]
     render :layout => 'playlist'
   end
 

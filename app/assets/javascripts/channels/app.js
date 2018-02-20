@@ -12,6 +12,10 @@ $('document').ready(function(){
 
     received: function(data) {
       var userId = parseInt($('.delete_user_id').text());
+      // User id is incorrect, get true user_id
+      var str_id = String(userId)
+      var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
+      // end
       var regExp = /\d+/;
       if(regExp.exec(window.location.pathname) != null) {
         var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
@@ -68,7 +72,7 @@ $('document').ready(function(){
 
         $('.song-list').html('');
 
-        data[0].forEach(function(song) {
+        $(data[0]).each(function(index, song) {
           if (song.status === "played") {
             var divContainer = $('<div>').attr('class', 'song-in-queue played').attr('data-playlist-id', playlist_id).attr('data-suggested-song-id', song.id).html('<i class="fa fa-check" aria-hidden="true"></i>'+song.name + ' - ' + song.artist);
           }
@@ -111,9 +115,10 @@ $('document').ready(function(){
             var span = $('<span>').attr('class',"buttons");
             var buttonUp = $('<button>').attr('type',"button").attr('name','button').attr('class','upvote thumb_btn');
             var buttonDown = $('<button>').attr('type',"button").attr('name','button').attr('class','downvote thumb_btn');
+            var tempuserid = (data[5]) ? (data[5].id) : ("");
 
             data[3].forEach(function(vote) {
-              if ((vote.suggestedsong_id === song.id) && (vote.user_id === userId)){
+              if ((vote.suggestedsong_id === song.id) && (vote.user_id === true_user_id || vote.temp_user_id === tempuserid)){
                 if (vote.status === "up"){
                   $(buttonUp).addClass('voted');
 
@@ -134,7 +139,7 @@ $('document').ready(function(){
         var spanHeart = $('<span>').attr('class','heart');
         var iconHeart = $('<i>').attr('class','fa fa-heart');
         var netVote = $('<span>').attr('class','netvote').attr('id',song.id).html(song.net_vote);
-
+        var deleteBtnCode = $('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>')
         var heart = $(spanHeart).append(iconHeart).append(" ").append(netVote);
 
         console.log(span);
@@ -144,17 +149,21 @@ $('document').ready(function(){
         var divSong = $(divContainer);
         var spanAdd = $('<span>').html("<br/>" + ' Added By: <span class=\'song-added-by-user\'>' + song.user_name + '</span>').addClass('added-by');
         var div_replace = $(divSong).append(spanAdd)
-        var str_id = String(userId)
-        var true_user_id = Number( str_id.slice(0, (str_id.length / 2)) )
         votes.append(heart);
-        tempuserid = (data[5]) ? (data[5].id) : ("");
         console.log(data);
-        if ( true_user_id == song.user_id || song.user_id == tempuserid ) { // if user created this playlist or add song
-          votes.append('<a class="thumb_btn delete_song_btn tooltipped delete-song"><i class="material-icons icon-close">close</i></a>');
+        if ( (true_user_id == song.user_id || data[2] == true_user_id || song.user_id == tempuserid) ) { // if user created this playlist or add song
+          votes.append(deleteBtnCode);
+        } else {
+          deleteBtnCode = $(deleteBtnCode).css("cursor", "default").children().css("visibility", "hidden").parent();
+          votes.append(deleteBtnCode);
         }
         $(div_replace).append(votes);
         //if (song.playlist_id > 4) {
 
+
+        // These piece of code isn't working because:
+        // - Variable "userId" gives false id
+        // - It is under append votes to div. That is make no sense to append code into votes
           if ((data[2] === userId) || (song.user_id === userId)) {
             votes.append('<a class="thumb_btn delete_song_btn  delete-song"><i class="fa fa-trash" aria-hidden="true"></i></a>')
           }
@@ -174,7 +183,7 @@ $('document').ready(function(){
       }
     })
     $(".song-list").ready(function() {
-      App.app.received(gon.data_for_request);
+      typeof(gon) != "undefined" && App.app.received(gon.data_for_request);
     });
   }
 )

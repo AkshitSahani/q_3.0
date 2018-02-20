@@ -190,6 +190,11 @@ th, td {
   width: 5%;
 }
 
+// if special song special song status
+.playing i.material-icons.icon-close, .played i.material-icons.icon-close {
+  visibility: hidden;
+}
+
 
 @media (min-width: 768px) and (max-width: 991px) {
   .photos__elem {
