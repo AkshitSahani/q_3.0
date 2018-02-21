@@ -10,6 +10,10 @@
         </ul>
       </div>
     <% end %>
+    <button class="btn login-session" id="facebook-button" type="submit" name="action">SIGN UP WITH FACEBOOK</button>
+    <div class="or-form">
+      <strong class='or-form-text'>OR</strong>
+    </div>
     <div class="field input-field">
       <!-- <%= f.label :first_name %><br /> -->
       <%= f.text_field :first_name, :placeholder => "First Name" %>
@@ -28,9 +32,7 @@
       <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
     </div>
     <button class="btn login-session" id="sign-up-button" type="submit" name="action">Let's Party</button>
-    <div class="or-form">
-      <strong class='or-form-text'>OR</strong>
-    </div>
-    <button class="btn login-session" id="facebook-button" type="submit" name="action">SIGN UP WITH FACEBOOK</button>
+
+    <p class="have-account-text">Already have an account? <a href="/sessions/new">Log in here.</a></p>
 </div>
 <% end %>
