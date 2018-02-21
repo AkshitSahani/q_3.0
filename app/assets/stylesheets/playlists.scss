@@ -310,7 +310,7 @@ input#search {
 .playlist-details-buttons {
   text-align: center;
   padding: 10px 30px;
-  margin: 1rem auto 0;
+  margin: 1rem auto;
 }
 .playlist-details-buttons {
   span {float: none;}
@@ -1079,6 +1079,11 @@ li.guest{
     display:none;
   }
 }
+
+#d_player {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 480px) {
   .user_info{
     display:none;
