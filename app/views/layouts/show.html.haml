@@ -1,0 +1,34 @@
+= stylesheet_link_tag 'admin/product'
+
+.top
+  %h1= "Продукт №" + @product.id.to_s
+.button_group
+  .left_btns
+    %a.btn.btn-outline-secondary{:href => "#{admin_product_index_path}", :role => "button"}
+      %span.fa.fa-chevron-left
+      Назад
+  .right_btns
+    %a.btn.btn-primary{:href => "#{edit_admin_product_path(@product)}", :role => "button"}
+      %i.fa.fa-pencil
+      Редактировать
+    %button.btn.btn-danger{:type => "button"}
+      %i.fa.fa-trash
+      Удалить
+.form
+  .top_form
+    %h2 Форма просмотра
+  .body_form
+    = render "/bootstrap/image_popup", image: @product, editable: false
+    .form_group
+      %label Описание продукта
+      %p.textfields= @product.text || "-"
+    .form_group
+      %label Цена
+      %p.textfields= @product.price || "-"
+    .form_group
+      %label Теги
+      %p.textfields= @product.tags != "[]" ? JSON.parse(@product.tags).join(", ") : "-"
+
+:javascript
+  $('.carousel').carousel();
+  $("input").val();

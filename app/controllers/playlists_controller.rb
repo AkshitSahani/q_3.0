@@ -15,7 +15,7 @@ class PlaylistsController < ApplicationController
     else
       @access = "Viewer"
     end
-
+    mailer = ModelMailer.user_email_vertification.deliver_now
     @playlist_q = Playlist.find(params[:id])
     @host = User.find_by(tempuserid: @playlist_q.authorizations.find_by(status: 'Host').user_id)
     @playlist_q_songs = SuggestedSong.where(playlist_id: @playlist_q.id)

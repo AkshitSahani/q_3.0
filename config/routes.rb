@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  default_url_options :host => "https://app-q-music.herokuapp.com/"
   root 'sessions#frontpage'
   resources :sessions, only: [:new, :create, :destroy]
 
