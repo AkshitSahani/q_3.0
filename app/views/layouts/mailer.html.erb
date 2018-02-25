@@ -1,45 +1,127 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Q</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,500i,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<html style="font-family: Roboto;">
+  <head style="font-family: Roboto;">
+    <title style="font-family: Roboto;">Q</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" style="font-family: Roboto;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" style="font-family: Roboto;">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet" style="font-family: Roboto;">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,500i,700,900" rel="stylesheet" style="font-family: Roboto;">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet" style="font-family: Roboto;">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js" style="font-family: Roboto;"></script>
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" style="font-family: Roboto;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" style="font-family: Roboto;">
   </head>
 
-  <body class="main-body" id="target1">
+  <body class="main-body" id="target1" style="font-family: Roboto;margin: 0;padding-bottom: 15px;">
+    <style style="font-family: Roboto;">
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Lato Regular'), local('Roboto'), url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,70);
+    }
 
+    * {
+      font-family: Roboto;
+    }
 
-    <nav>
-      <div class="nav-wrapper">
-        <div class="container">
-          <%=link_to image_tag('Q.png', class: "responsive-img"), root_url, class: "brand-logo wow swing" %>
-          <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="material-icons" id="hamburger">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <li><%= link_to "LOG IN", new_session_url, class: 'purple-text' %></li>
-            <li><%= link_to "SIGN UP", new_user_url, class: 'purple-text' %></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><%= link_to "LOG IN", new_session_url, class: 'purple-text' %></li>
-            <li><%= link_to "SIGN UP", new_user_url, class: 'purple-text' %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    body {
+      margin: 0;
+      padding-bottom: 15px;
+    }
 
-  <p></p>
-      <div class="container">
+    #body {
+      min-height: 50vh;
+    }
 
-    <%= yield %>
+    .nav-wrapper {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      width: 100%;
+    }
 
-    </div>
+    .nav-wrapper .container {height: 64px;}
 
+    .container {
+      margin: 0 auto;
+      max-width: 1280px;
+      width: 90%;
+      display: block;
+    }
+
+    #bottom_container {
+      padding: 20px 0;
+    }
+
+    .container img {
+      height: 45px;
+      padding: 9px;
+      display: inline-grid;
+    }
+
+    .container p {
+      padding: 10px 0;
+      margin-top: 0;
+    }
+
+    .purple-text {
+      color: #9c27b0;
+    }
+
+    .username {
+      line-height: 64px;
+      vertical-align: bottom;
+      float: right;
+      text-transform: uppercase;
+      transition: background-color .3s;
+      font-size: 1rem;
+      padding: 0 15px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .large {
+      display: block;
+      font-size: 2em;
+      margin: 0 !important;
+    }
+
+    .username:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      font-family: "Roboto", "sans-serif";
+      text-decoration: none;
+      margin-top: 19px;
+      background-color: #f1469c;
+      color: white;
+      letter-spacing: 1.5px;
+      border-radius: 5px;
+      padding: 7px 20px;
+      text-transform: uppercase;
+    }
+
+    @media only screen and (min-width: 601px) {
+      .container {
+        width: 85% !important;
+      }
+    }
+    @media only screen and (min-width: 993px) {
+      .container {
+        width: 70% !important;
+      }
+    }
+  </style>
+    <table id="body" cellpadding="0" cellspacing="0" border="0" width="100%" style="font-family: Roboto;min-height: 50vh;">
+      <tr class="nav-wrapper" style="font-family: Roboto;box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);width: 100%;">
+        <td class="container" style="font-family: Roboto;margin: 0 auto;max-width: 1280px;width: 90%;display: block;height: 64px;">
+          <a href="#" style="font-family: Roboto;"><img src="https://app-q-music.herokuapp.com/assets/Q-005722524fabd49a2e34579d6a41d615cbbd2e0bfa21061ad2ba32c5fa8543fd.png" style="font-family: Roboto;height: 45px;padding: 9px;display: inline-grid;"></a>
+          <a class="purple-text username" href="https://app-q-music.herokuapp.com/users/<%= @user.id %>" style="font-family: Roboto;color: #9c27b0;line-height: 64px;vertical-align: bottom;float: right;text-transform: uppercase;transition: background-color .3s;font-size: 1rem;padding: 0 15px;cursor: pointer;text-decoration: none;"><%= @user.first_name %></a>
+        </td>
+      </tr>
+      <tr style="font-family: Roboto;padding-top: 20px;">
+        <%= yield %>
+      </tr>
+    </table>
   </body>
-
 </html>

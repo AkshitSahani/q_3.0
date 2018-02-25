@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     render :layout => "create_account"
-
   end
 
   def create
@@ -22,6 +21,8 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         session[:active_id] = @user.tempuserid
+        mailer = ModelMailer.user_email_vertification(@user).deliver_now
+        flash[:notice] = "Confirm your email"
         redirect_to user_path(@user)
       else
         render "new"
