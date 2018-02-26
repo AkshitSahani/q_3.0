@@ -46,12 +46,15 @@ class UsersController < ApplicationController
     guest_auths.each do |auth|
       @guest << auth.playlist if auth.playlist
     end
+    # Check if email is confirmed
+    if User.find(params[:id]).email_confirmed == false
+      flash[:notice] = "Confirm your email"
+    end
   end
 
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
-
 
 end

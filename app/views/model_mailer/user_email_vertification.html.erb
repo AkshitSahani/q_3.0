@@ -3,5 +3,5 @@
   <p style="font-family: Roboto;padding: 10px 0;margin-top: 0;">
     Please click the following link to confirm that <%= @user.email %> is your email address:
   </p>
-  <a class="btn" href="#" style="font-family: &quot;Roboto&quot;, &quot;sans-serif&quot;;text-decoration: none;margin-top: 19px;background-color: #f1469c;color: white;letter-spacing: 1.5px;border-radius: 5px;padding: 7px 20px;text-transform: uppercase;">Confirm reply address</a>
+  <a class="btn" href="http://0.0.0.0:3000/users/<%= @user.id %>/confirm_email/<%= @user.confirm_code %>" style="font-family: &quot;Roboto&quot;, &quot;sans-serif&quot;;text-decoration: none;margin-top: 19px;background-color: #f1469c;color: white;letter-spacing: 1.5px;border-radius: 5px;padding: 7px 20px;text-transform: uppercase;">Confirm reply address</a>
 </td>

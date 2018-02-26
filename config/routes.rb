@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   get '/auth/deezer/callback', to: 'sessions#frontpage'
 
-  resources :users
+  resources :users do
+    get "confirm_email/:confirm_code", to: "email_actions#confirm_email"
+  end
   resources :playlists do
     resources :suggestedsongs do
       resources :votes
