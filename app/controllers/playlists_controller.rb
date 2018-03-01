@@ -258,7 +258,7 @@ class PlaylistsController < ApplicationController
     end
 
     @votes = Vote.get_votes(@playlist.id)
-    ActionCable.server.broadcast(:app, [@playlist, '', @host_id])
+    ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes, @playlist])
 
     if @playlist.public == false
       ActionCable.server.broadcast(:app, [@songs, "", @host_id, @votes, @playlist])

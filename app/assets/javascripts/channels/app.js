@@ -21,10 +21,10 @@ $('document').ready(function(){
         var playlist_id = parseInt(regExp.exec(window.location.pathname)[0]);
       }
       console.log(data);
-      if (data[0].id === playlist_id) {
-        if (data[0].public) {  //public
-
-          $('#make-public').toggleClass('active');
+      if (data[4].id === playlist_id) {
+        if (data[4].public == true) {  //public
+          $(".search").show();
+          $('#make-public').addClass('active');
           $('.que').find('.buttons').addClass('hidden');
           if (userId != data[2])  { //if guest or viewer
             $('.add-search-container').addClass('hidden');
@@ -33,11 +33,10 @@ $('document').ready(function(){
           else { //if host
             $('.playing').children('a').addClass('hidden');
           }
-        }
-        else if (data[0].public === false) { //private
+        } else if (data[4].public === false) { //private
           console.log('we are going private');
-
-          $('#make-public').toggleClass('active');
+          $(".search").hide();
+          $('#make-public').removeClass('active');
           $('.add-search-container').removeClass('hidden');
         }
       }
